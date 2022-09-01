@@ -1,0 +1,17 @@
+.book-list {
+    background-color: inherit;
+}
+
+.book-list-item {
+    margin-bottom: 25px;
+    border: none;
+}
+
+.book-list-item:hover
+{
+    background-color: orange;
+}
+
+.book-list-item:hover a {
+    color: white;
+}

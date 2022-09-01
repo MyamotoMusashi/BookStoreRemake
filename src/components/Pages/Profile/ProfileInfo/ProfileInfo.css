@@ -1,0 +1,42 @@
+.profile-page-main {
+    background-color: black;
+}
+
+.user-profile-picture {
+    height: 300px;
+    width: 250px;
+}
+
+.profile-page-wrapper {
+    height: 100h;
+}
+
+.profile-page-wrapper .user-information-form,
+.profile-page-wrapper .shipping-information-form,
+.profile-page-wrapper .billing-information-form {
+    background-color: inherit;
+    color: black;
+}
+
+.profile-page-wrapper .user-information-form input,
+.profile-page-wrapper .shipping-information-form input,
+.profile-page-wrapper .billing-information-form input {
+    background-color: inherit;
+    color: black;
+}
+
+.user-profile-edit-button-wrapper button{
+    width: 250px;
+}
+
+.profile-page-navigation {
+    padding: 1%;
+}
+
+.billing-information-form-controls-wrapper {
+    display: none;
+}
+
+.billing-information-form .shipping-information-form {
+    margin-top: 0;
+}

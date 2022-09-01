@@ -1,0 +1,9 @@
+.form-input {
+    border: none;
+    border-bottom: solid #E1AC27 3px;
+    text-align: center;
+}
+
+.form-input:focus {
+    outline: none;
+}

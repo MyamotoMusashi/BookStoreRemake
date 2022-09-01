@@ -1,38 +1,63 @@
-.App {
+.App,
+body{
   text-align: center;
+  background-color: #729679;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.navigation{
+  height: fit-content;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bg-color{
+  background-color: #729679;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.primary-color{
+  background-color: #E1AC27;
+}
+
+.secondary-color{
+  background-color: #81B861;
+}
+
+.clicked{
+  color: #FFFF00
+}
+
+/* ul,
+li,
+article,
+.book-list-wrapper,
+.list-group-item,
+.list-group,
+.list-group-horizontal {
+  background-color: #729679;
+  border: none;
+} */
+
+.page-navigation {
+  width: 10%;
+  margin-left: 45%;
+}
+
+.page-navigation li {
+  padding: 0;
+  background-color: #729679;
+  border: black solid 1px;
+}
+
+.page-navigation li a{
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+*::-webkit-scrollbar {
+  width: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+*::-webkit-scrollbar-track {
+  background: #729679;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #E1AC27;
 }

@@ -1,0 +1,19 @@
+.billing-information-form {
+    background-color: white;
+}
+
+.billing-information-form input {
+    padding-top: 10px;
+}
+
+.billing-information-form-address1-wrapper input {
+    width: 25%;
+}
+
+.billing-information-form-address2-wrapper input {
+    width: 25%;
+}
+
+.billing-information-form .shipping-information-form p {
+    display: none;
+}

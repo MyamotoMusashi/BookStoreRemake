@@ -1,0 +1,9 @@
+.order-secondary-information {
+    background-color: #81B861;
+    margin-top: 20px;
+}
+
+.order-secondary-information p {
+    border: solid black 1px;
+    margin-bottom: 0;
+}

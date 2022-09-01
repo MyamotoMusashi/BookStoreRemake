@@ -1,0 +1,39 @@
+.book-item {
+    background-color: inherit;
+}
+
+.book-cover {
+    height: 214px;
+    width: 162px;
+}
+
+.book-overview {
+    font-size: 14px;
+    text-align: left;
+    margin: 0;
+}
+
+.book-heading {
+    color: white;
+    font-size: 16px;
+}
+
+.book-author {
+    color: white;
+    font-size: 14px;
+}
+
+.book-price {
+    color: #FFFF00;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    width: 162px;
+}
+
+.read-more-link {
+    color: #E1AC27;
+}

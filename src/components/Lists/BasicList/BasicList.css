@@ -1,0 +1,9 @@
+.basic-list {
+    background-color: inherit;
+}
+
+.basic-list-item {
+    background-color: inherit;
+    margin-bottom: 25px;
+    border: none;
+}

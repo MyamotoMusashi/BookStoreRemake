@@ -1,0 +1,14 @@
+.tag-btn{
+    background-color: #81B861;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    text-decoration: none;
+    width: max-content;
+    border-radius: 5px;
+  }
+
+  .tag-btn:hover {
+    color: yellow;
+  }

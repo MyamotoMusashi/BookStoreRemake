@@ -1,0 +1,16 @@
+.login-form  {
+    padding-left: 30%;
+    padding-bottom: 5%;
+}
+
+.login-form-input {
+    border: none;
+    border-bottom: solid orange 3px;
+    display: block;
+    text-align: center;
+}
+
+.login-form-input:focus {
+    outline: none;
+}
+

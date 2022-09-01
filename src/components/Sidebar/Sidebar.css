@@ -1,0 +1,16 @@
+.sidebar,
+.sidebar-item {
+    background-color: inherit;
+    color: inherit;
+}
+
+.sidebar-item {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    border: black solid 1px;
+  }
+  
+  .sidebar-item a {
+    color: inherit;
+  }

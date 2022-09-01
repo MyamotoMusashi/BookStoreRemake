@@ -1,0 +1,4 @@
+BookDetailsComponent -> Click on Author -> should lead you to the author page where you can see other titles by the author and some information about the author and his picture
+BookDetailsComponent -> horizontally center the title and the author
+BookListComponent -> make the title and author wrapper a certain width and heigh. Clip the author name and title after certain characters not to go outside of the fixed width and height
+Navigation -> Remove Books; Orders should be visible only for admin; and add users -> visible for admins; authors -> visible for everybody

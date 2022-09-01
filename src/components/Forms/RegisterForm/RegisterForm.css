@@ -1,0 +1,27 @@
+.user-register-form-wraper {
+    background-color: white;
+}
+
+.user-register-form {
+    background-color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.user-register-form button {
+    width: 100%;
+}
+
+.user-information-form,
+.shipping-information-form,
+.billing-information-form {
+    margin-top: 40px;
+}
+
+.billing-information-form {
+    margin-bottom: 40px;
+}
+
+.user-register-form-register-btn-wrapper {
+    padding: 0;
+}

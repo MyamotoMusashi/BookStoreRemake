@@ -1,0 +1,37 @@
+.book-details-image-wrapper {
+    padding-top: 5%;
+}
+
+.book-details-image {
+    width: 216px;
+    height: 334px;
+}
+
+.book-details-main-content {
+    padding-top: 2.5%;
+}
+
+.book-details-main-content-header {
+    text-align: left;
+    padding-left: 25%;
+}
+
+.book-details-overview {
+    text-align: justify;
+    height: 47%;
+    overflow-x: hidden;
+    border: solid 1px black;
+    padding: 20px;
+}
+
+.book-details-additional-details-wrapper {
+    color: #FFFF00;
+    border: solid 1px black;
+    height: 282.5px;
+    justify-content: center;
+    justify-items: center;
+    justify-self: center;
+    vertical-align: middle;
+    text-align: center;
+    padding-top: 10%;
+}

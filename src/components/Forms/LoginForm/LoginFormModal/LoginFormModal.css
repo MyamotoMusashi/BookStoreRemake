@@ -1,0 +1,13 @@
+.forgotten-password-btn {
+    background-color: white;
+    border: none;
+}
+
+.modal-header,
+.modal-footer {
+    border: none;
+}
+
+.modal-footer {
+    justify-content: center;
+}

@@ -1,0 +1,17 @@
+.profile-order-item-list-item {
+    border: none;
+    border-right: solid #E1AC27 1px;
+    border-left: solid #E1AC27 1px;
+    font-size: medium;
+}
+
+.profile-order-item-list-item,
+.profile-order-item-list-item h2,
+.profile-order-item-list-item h3 {
+    font-size: medium;
+}
+
+.profile-order-item-list-item img {
+    height: 119px;
+    width: 90px;
+}

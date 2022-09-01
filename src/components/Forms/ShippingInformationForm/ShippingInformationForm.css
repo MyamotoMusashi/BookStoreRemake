@@ -1,0 +1,15 @@
+.shipping-information-form {
+    background-color: white;
+}
+
+.shipping-information-form input {
+    padding-top: 10px;
+}
+
+.shipping-information-form-address1-wrapper input {
+    width: 65%;
+}
+
+.shipping-information-form-address2-wrapper input {
+    width: 65%;
+}

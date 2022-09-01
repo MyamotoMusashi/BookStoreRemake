@@ -1,0 +1,12 @@
+.nav-btn{
+    background-color: #729679;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    text-decoration: none;
+  }
+
+  .nav-btn:hover {
+    color: yellow;
+  }

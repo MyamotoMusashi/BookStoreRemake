@@ -1,0 +1,14 @@
+.shopping-cart-item-list {
+    background-color: white;
+}
+
+.shopping-cart-item-wrapper {
+    border: none;
+    background-color: white;
+    border-bottom: solid orange 3px;
+}
+
+.shopping-cart-item-wrapper:last-child {
+    border: none;
+    margin-bottom: 20px;
+}

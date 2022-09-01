@@ -1,0 +1,14 @@
+.home-page-main {
+    background-color: #729679;
+}
+
+.book-list,
+.book-list-item{
+    background-color: #729679;
+}
+
+.sidebar-wrapper {
+    width: 5%;
+    height: 20%;
+    color: white;
+}
