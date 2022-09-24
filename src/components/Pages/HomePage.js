@@ -6,9 +6,18 @@ import SubNavigationButton from '../Buttons/SubNavigationButton/SubNavigationBut
 import BookList from '../BookList/BookList';
 
 import bookService from '../../services/BookService';
+import PrimaryButton from '../Buttons/PrimaryButton/PrimaryButton';
+import OpenShoppingCartButton from '../Buttons/OpenShoppingCartButton/OpenShoppingCartButton';
+import { useEffect, useState } from 'react';
 
 function HomePage() {
-    let books = bookService.getBooks()
+    let [books, setBooks] = useState([])
+
+    useEffect(() => {
+        bookService.getBooksSpring().then(async res => {
+            setBooks(await res.json())
+        })
+    })
 
     return <>
         <div className='col-11 .home-page-main'>

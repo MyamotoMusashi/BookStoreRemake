@@ -6,9 +6,9 @@ function OrderOverviewItem(props) {
 
     return <div className={customClassName.trim()}>
         <img src={orderAvatar} alt="" width='180px' height='180px' />
-        <p>$200</p>
-        <p>31-07-2022</p>
-        <p>#008 Tandang Sora Street, Saranay, Isabela, Philippines</p>
+        <p>${props.order.totalPrice}</p>
+        <p>{props.order.dateCreated}</p>
+        <p>{props.order.shippingInformation.address1}, {props.order.shippingInformation.city}, {props.order.shippingInformation.country} {props.order.shippingInformation.zipCode}</p>
     </div>
 }
 

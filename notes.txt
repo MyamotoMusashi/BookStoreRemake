@@ -1,4 +1,17 @@
 BookDetailsComponent -> Click on Author -> should lead you to the author page where you can see other titles by the author and some information about the author and his picture
 BookDetailsComponent -> horizontally center the title and the author
 BookListComponent -> make the title and author wrapper a certain width and heigh. Clip the author name and title after certain characters not to go outside of the fixed width and height
+BookListComponent -> heading sholud be two lines long and truncated with ellipse
 Navigation -> Remove Books; Orders should be visible only for admin; and add users -> visible for admins; authors -> visible for everybody
+Make data validation for all forms and entities
+fix the clicking of the buttons
+ProfileInformation myOrders, should show the orders of the user
+make possibility for the user to place orders
+Make the Spring Reporistory to read and write from file
+connect db
+input 20 000 000 records per enitity in the db
+make concurrent test with 1000/ 10 000 and 100 000 users using JMeter
+guard the routes, one user should not be able to access the routes of another user
+fix the annoying bug when click on the shopping card close you have to click twice -> the problem is in the Login Modal. Because he needs to be displayed on top of the shopping card when click chekcout. perhaps move this function to earlier stage. such as when click on "add to card"
+OpenShoppigCartButton -> change useEffect to stop forever loop
+Shift from using the browser storage to using UserContext

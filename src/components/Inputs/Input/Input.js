@@ -1,7 +1,11 @@
 import './Input.css'
 
 function Input(props){
-    return <input className="form-input" placeholder={props.name} {...props}></input>
+    if (props.editable) {
+        return <input className="form-input editable" placeholder={props.placeholder} {...props} ></input>
+    }
+    
+    return <input className="form-input" placeholder={props.placeholder} {...props}></input>
 }
 
 export default Input

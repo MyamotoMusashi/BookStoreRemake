@@ -5,8 +5,8 @@ function BookList(props) {
     const books = props.data
 
     return <ul className='row list-group list-group-horizontal book-list'>
-        {books.map((book) => {
-            return <li className='col-2 list-group-item book-list-item'>
+        {books.map((book, index) => {
+            return <li className='col-2 list-group-item book-list-item' key={book.title}>
                 <BookItem data={book}></BookItem>
             </li>
         })}

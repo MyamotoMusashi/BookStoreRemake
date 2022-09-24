@@ -3,7 +3,7 @@ import './BillingInformationForm.css'
 import Input from "../../Inputs/Input/Input"
 import ShippingInformationForm from '../ShippingInformationForm/ShippingInformationForm'
 
-function BillingInformationForm() {
+function BillingInformationForm(props) {
     return <div className="row billing-information-form">
         <p>Billing Information</p>
         <div className='billing-information-form-controls-wrapper'>
@@ -17,7 +17,7 @@ function BillingInformationForm() {
             </div>
         </div>
         <div className='col-12'>
-            <ShippingInformationForm />
+            <ShippingInformationForm defaultValues={props.defaultValues} readOnly={props.readOnly || null}/>
         </div>
     </div>
 }

@@ -17,16 +17,16 @@ function LoginFormModal() {
     }
 
 
-    return <div class="modal fade" id="loginFormModal" tabindex="-1" aria-labelledby="loginFormModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    return <div className="modal fade" id="loginFormModal" tabIndex="-1" aria-labelledby="loginFormModalLabel" aria-hidden="true">
+        <div className="modal-dialog modal-dialog-centered">
+            <div className="modal-content">
+                <div className="modal-header">
+                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div className="modal-body">
                     <LoginForm />
                 </div>
-                <div class="modal-footer">
+                <div className="modal-footer">
                     <SecondaryButton text="Create an account" onClick={registerUser} data-bs-dismiss="modal" />
                     <SecondaryButton text="Continue as Guest" onClick={registerGuest} data-bs-dismiss="modal" />
                 </div>

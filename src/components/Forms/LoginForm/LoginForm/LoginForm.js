@@ -1,6 +1,7 @@
 import './LoginForm.css'
 import PrimaryButton from "../../../Buttons/PrimaryButton/PrimaryButton"
 import React from 'react';
+import userService from '../../../../services/userService';
 
 function LoginForm() {
 
@@ -8,10 +9,22 @@ function LoginForm() {
     let passwordInput = React.createRef()
 
     const onLogin = () => {
-        if (usernameInput.current.value === 'gogo' && passwordInput.current.value === 'mogo') {
-            sessionStorage.setItem("bookstore-user", "gogo")
-            window.location.reload(true)
-        }
+        userService.authenticateUserSpring(usernameInput.current.value, passwordInput.current.value)
+            .then(response => {
+                if (response.status === 200) {
+                    return response.json()
+                }
+
+                return null
+            })
+            .then(user => {
+                if (user) {
+                    sessionStorage.setItem('bookstore-user', user.username)
+                    sessionStorage.setItem('bookstore-role', user.role)
+                    sessionStorage.setItem('bookstore-all', JSON.stringify(user))
+                    window.location.reload(true)
+                }
+            })
     }
 
     return <>
@@ -20,7 +33,7 @@ function LoginForm() {
             <input type="text" className="login-form-input" placeholder='Password' ref={passwordInput} />
         </form>
         <button className="forgotten-password-btn">Forgotten password?</button>
-        <PrimaryButton text="Login" onClick={onLogin}/>
+        <PrimaryButton text="Login" onClick={onLogin} />
     </>
 }
 

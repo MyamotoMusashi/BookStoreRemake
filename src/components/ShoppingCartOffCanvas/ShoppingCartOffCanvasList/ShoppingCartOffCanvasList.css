@@ -1,5 +1,5 @@
-.shopping-cart-item-list {
-    background-color: white;
+.shopping-cart-list {
+    min-height: 80%;
 }
 
 .shopping-cart-item-wrapper {
@@ -11,4 +11,8 @@
 .shopping-cart-item-wrapper:last-child {
     border: none;
     margin-bottom: 20px;
+}
+
+.shopping-cart-list-only-child {
+    margin-top: 50%;
 }
