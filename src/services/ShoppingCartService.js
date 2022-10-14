@@ -1,4 +1,4 @@
-let shoppingCart = []
+let shoppingCart = JSON.parse(sessionStorage.getItem('bookstore-cart')) || []
 
 function addToShoppingCart(book) {
     shoppingCart.push(book)

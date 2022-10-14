@@ -1,0 +1,16 @@
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-toggle{
+    background-color: #729679;
+    color: white;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
+    text-decoration: none;
+  }
+
+  .dropdown-toggle:hover {
+    color: yellow;
+  }

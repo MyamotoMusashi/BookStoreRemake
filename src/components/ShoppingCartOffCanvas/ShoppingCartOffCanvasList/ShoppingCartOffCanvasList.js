@@ -3,19 +3,24 @@ import './ShoppingCartOffCanvasList.css'
 import ShoppingCartOffCanvasItem from "../ShoppingCartOffCanvasItem/ShoppingCartOffCanvasItem"
 
 import { useContext } from 'react'
-import { Context } from '../../../App'
+import { ShoppingCartContext } from '../../contexts/ShoppingCartContext.js'
 
 
 function ShoppingCartOffCanvasList(props) {
-    let shoppingCartData = useContext(Context).shoppingCart
+    let shoppingCartContext = useContext(ShoppingCartContext)
+
+    function removeItem(index){
+        console.log(index)
+        shoppingCartContext.removeFromShoppingCart(index)
+    }
 
 
     return <ul className='list-group shopping-cart-list'>
-        {shoppingCartData.length > 0
+        {shoppingCartContext.shoppingCart.length > 0
             ?
-            shoppingCartData.map((shoppingCartItem, index) => {
+            shoppingCartContext.shoppingCart.map((shoppingCartItem, index) => {
                 return <li className='list-group-item shopping-cart-item-wrapper' key={index}>
-                    <ShoppingCartOffCanvasItem data={shoppingCartItem} />
+                    <ShoppingCartOffCanvasItem data={shoppingCartItem} onRemove={event => removeItem(index)} />
                 </li>
 
             })

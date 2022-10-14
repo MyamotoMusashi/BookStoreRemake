@@ -5,8 +5,6 @@ BookListComponent -> heading sholud be two lines long and truncated with ellipse
 Navigation -> Remove Books; Orders should be visible only for admin; and add users -> visible for admins; authors -> visible for everybody
 Make data validation for all forms and entities
 fix the clicking of the buttons
-ProfileInformation myOrders, should show the orders of the user
-make possibility for the user to place orders
 Make the Spring Reporistory to read and write from file
 connect db
 input 20 000 000 records per enitity in the db
@@ -15,3 +13,5 @@ guard the routes, one user should not be able to access the routes of another us
 fix the annoying bug when click on the shopping card close you have to click twice -> the problem is in the Login Modal. Because he needs to be displayed on top of the shopping card when click chekcout. perhaps move this function to earlier stage. such as when click on "add to card"
 OpenShoppigCartButton -> change useEffect to stop forever loop
 Shift from using the browser storage to using UserContext
+Change Bootstap components to React-Bootstap Components
+https://www.thecommerceshop.com/blog/an-ultimate-guide-to-optimizing-your-shopping-cart-checkouts-to-improve-conversion-rate/

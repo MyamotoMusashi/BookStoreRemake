@@ -1,0 +1,13 @@
+#shopping-cart-with-items:after{
+    content:attr(value);
+    font-size:12px;
+    color: black;
+    background: #E1AC27;
+    border-radius:50%;
+    border: solid black 1.5px;
+    padding: 0 5px;
+    position:relative;
+    left:-8px;
+    top:-10px;
+    opacity:0.9;
+}

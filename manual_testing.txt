@@ -1,0 +1,6 @@
+checkout page
+ -> checkout page should display
+	-> the user details information
+	-> summary of the user's ordered items
+MyOrders page
+ -> should display list of the user's orders history

@@ -12,13 +12,12 @@ import UserRegisterPage from './components/Pages/UserRegisterPage/UserRegisterPa
 import OrdersPage from './components/Pages/OrdersPage/OrdersPage';
 import OrdersDetailsPage from './components/Pages/OrdersDetailsPage/OrdersDetailsPage';
 import CheckoutPage from './components/Pages/CheckoutPage/CheckoutPage';
+import LoginFormModal from './components/Forms/LoginForm/LoginFormModal/LoginFormModal'
 
-import shoppingCartService from './services/ShoppingCartService';
-
+import {ShoppingCartContext, ShoppingCartContextProvider} from './components/contexts/ShoppingCartContext.js'
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 
-export const Context = createContext()
 export const UserContext = createContext()
 
 function App() {
@@ -27,31 +26,30 @@ function App() {
     return ev.returnValue = 'Are you sure you want to close?';
   });
 
-  const [shoppingCart, setShoppingCart] = useState([])
+  const [showLogin, setShowLogin] = useState(false)
   const [user, setUser] = useState()
-
-  function addToShoppingCart(book) {
-    shoppingCartService.addToShoppingCart(book)
-    shoppingCartService.getShoppingCart().then(res => {
-      setShoppingCart(res)
-    })
-  }
 
   function updateUser(updatedUser) {
     setUser(updatedUser)
   }
 
+  function handleCloseLogin() {
+    setShowLogin(false)
+  }
+
+  function toggleShowLogin() {
+    setShowLogin((s) => !s)
+  }
+
   return (
-    <Context.Provider value={
-      {
-        shoppingCart: shoppingCart,
-        addToShoppingCart: addToShoppingCart
-      }
-    }>
+    <ShoppingCartContextProvider>
       <UserContext.Provider value={
         {
           user: user,
-          updateUser
+          show: showLogin,
+          updateUser,
+          handleClose: handleCloseLogin,
+          toggleShowLogin
         }
       }>
 
@@ -64,6 +62,7 @@ function App() {
             </div>
             <div className='row main-content bg-color'>
               <ShoppingCartOffCanvas></ShoppingCartOffCanvas>
+              <LoginFormModal />
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/books/:bookId" element={<BookDetailsPage />} />
@@ -81,7 +80,7 @@ function App() {
           </div>
         </BrowserRouter>
       </UserContext.Provider>
-    </Context.Provider>
+    </ShoppingCartContextProvider>
   );
 }
 

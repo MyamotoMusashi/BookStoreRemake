@@ -1,4 +1,5 @@
 .secondary-btn {
     color: #FFFF00;
     background-color: #729679;
+    min-width: fit-content;
 }
