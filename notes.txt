@@ -15,3 +15,4 @@ OpenShoppigCartButton -> change useEffect to stop forever loop
 Shift from using the browser storage to using UserContext
 Change Bootstap components to React-Bootstap Components
 https://www.thecommerceshop.com/blog/an-ultimate-guide-to-optimizing-your-shopping-cart-checkouts-to-improve-conversion-rate/
+BookListComponent -> add buttons for buy, favourite, gift

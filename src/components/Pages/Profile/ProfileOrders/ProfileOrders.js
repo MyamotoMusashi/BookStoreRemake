@@ -12,7 +12,6 @@ function ProfileOrders() {
         orderService.getOrdersByUserId(userId)
             .then(async (data) => {
                 setOrders(await data.json())
-                console.log(orders)
                 setIsLoaded(true)
             })
     }, [])

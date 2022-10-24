@@ -3,11 +3,12 @@ import OrderOverviewItem from "../../../../OrderOverviewItem/OrderOverviewItem"
 import './ProfileOrderItem.css'
 
 function ProfileOrderItem(props) {
+    console.log(props)
     return <li className="list-group-item profile-order-item">
         <section className="row">
             <OrderOverviewItem className="col-2 profile-order-item-list-overview" order={props.order}/>
             <div className="col-10">
-                <ProfileOrderItemList order={props.order}/>
+                <ProfileOrderItemList order={props.order.itemsOrdered}/>
             </div>
         </section>
     </li>

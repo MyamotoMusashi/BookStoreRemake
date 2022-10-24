@@ -17,13 +17,13 @@ function CheckoutPage() {
     let navigate = useNavigate()
 
     function submitOrder() {
-        console.log(shoppingCart.shoppingCart)
         let order = {
-            booksOrdered: shoppingCart.shoppingCart,
+            itemsOrdered: shoppingCart.shoppingCart,
             userId: user.id,
             shippingInformation: user.shippingInformation
         }
 
+        console.log(order)
         orderService.addOrder(order)
             .then(() => {
                 shoppingCart.clearShoppingCart()
@@ -50,7 +50,7 @@ function CheckoutPage() {
                     </div>
                 </div>
             </div>
-            <ProfileOrderItemList order={data} />
+            <ProfileOrderItemList order={data.booksOrdered} />
         </div>
         <div className="row">
             <div className="col">
