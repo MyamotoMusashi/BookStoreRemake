@@ -59,7 +59,7 @@ function getAllUsers() {
     return users.slice()
 }
 
-function getUserByID(id) {
+function getUserByID() {
     return users.filter(u => u.id === 1)[0]
 }
 

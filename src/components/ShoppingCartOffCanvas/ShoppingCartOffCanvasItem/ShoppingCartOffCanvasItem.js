@@ -1,6 +1,8 @@
+import { useState } from 'react';
+import { object, func } from 'prop-types';
+
 import SecondaryButton from '../../Buttons/SecondaryButton/SecondaryButton';
 import RemoveButton from '../../Buttons/RemoveButton/RemoveButton';
-import { useState } from 'react';
 
 function ShoppingCartOffCanvasItem(props) {
     let book = props.data.book
@@ -46,6 +48,11 @@ function ShoppingCartOffCanvasItem(props) {
             </div>
         </section>
     </section>
+}
+
+ShoppingCartOffCanvasItem.propTypes = {
+    data: object,
+    onRemove: func
 }
 
 export default ShoppingCartOffCanvasItem

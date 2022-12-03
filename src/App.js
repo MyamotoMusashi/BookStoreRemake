@@ -1,5 +1,5 @@
-import { Routes, Route, BrowserRouter as Router, BrowserRouter } from 'react-router-dom';
-import { createContext, useEffect, useState } from 'react';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
+import { createContext, useState } from 'react';
 
 import Navigation from './components/Navigation/Navigation';
 import ShoppingCartOffCanvas from './components/ShoppingCartOffCanvas/ShoppingCartOffCanvas';
@@ -12,11 +12,14 @@ import UserRegisterPage from './components/Pages/UserRegisterPage/UserRegisterPa
 import OrdersPage from './components/Pages/OrdersPage/OrdersPage';
 import OrdersDetailsPage from './components/Pages/OrdersDetailsPage/OrdersDetailsPage';
 import CheckoutPage from './components/Pages/CheckoutPage/CheckoutPage';
+import UsersPage from './components/Pages/UsersPage/UsersPage';
 import LoginFormModal from './components/Forms/LoginForm/LoginFormModal/LoginFormModal'
 
-import {ShoppingCartContext, ShoppingCartContextProvider} from './components/contexts/ShoppingCartContext.js'
+import { ShoppingCartContextProvider } from './components/contexts/ShoppingCartContext.js'
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
+import InfoToast from './components/toasts/InfoToast';
+import { ToastContextProvider } from './components/contexts/ToastContextProvider';
 
 export const UserContext = createContext()
 
@@ -42,45 +45,49 @@ function App() {
   }
 
   return (
-    <ShoppingCartContextProvider>
-      <UserContext.Provider value={
-        {
-          user: user,
-          show: showLogin,
-          updateUser,
-          handleClose: handleCloseLogin,
-          toggleShowLogin
-        }
-      }>
+    <ToastContextProvider>
+      <ShoppingCartContextProvider>
+        <UserContext.Provider value={
+          {
+            user: user,
+            show: showLogin,
+            updateUser,
+            handleClose: handleCloseLogin,
+            toggleShowLogin
+          }
+        }>
 
-        <BrowserRouter>
-          <div className="App container-flux">
-            <div className='row navigation primary-color'>
-              <div className='col'>
-                <Navigation />
+          <BrowserRouter>
+            <div className="App container-flux">
+              <div className='row navigation primary-color'>
+                <div className='col'>
+                  <Navigation />
+                </div>
+              </div>
+              <div className='row main-content bg-color'>
+                <ShoppingCartOffCanvas></ShoppingCartOffCanvas>
+                <LoginFormModal />
+                <InfoToast />
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/books/:bookId" element={<BookDetailsPage />} />
+                  <Route path="/users/register" element={<UserRegisterPage />} />
+                  <Route path='/users/:userId' element={<ProfilePage />} />
+                  <Route path='/orders' element={<OrdersPage />} />
+                  <Route path='/orders/:orderId' element={
+                    <ProtectedRoute user={true}>
+                      <OrdersDetailsPage />
+                    </ProtectedRoute>}
+                  />
+                  <Route path='/checkout' element={<CheckoutPage />} />
+                  <Route path='/users' element={<UsersPage />} />
+                </Routes>
               </div>
             </div>
-            <div className='row main-content bg-color'>
-              <ShoppingCartOffCanvas></ShoppingCartOffCanvas>
-              <LoginFormModal />
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/books/:bookId" element={<BookDetailsPage />} />
-                <Route path="/users/register" element={<UserRegisterPage />} />
-                <Route path='/users/:userId' element={<ProfilePage />} />
-                <Route path='/orders' element={<OrdersPage />} />
-                <Route path='/orders/:orderId' element={
-                  <ProtectedRoute user={true}>
-                    <OrdersDetailsPage />
-                  </ProtectedRoute>}
-                />
-                <Route path='/checkout' element={<CheckoutPage />} />
-              </Routes>
-            </div>
-          </div>
-        </BrowserRouter>
-      </UserContext.Provider>
-    </ShoppingCartContextProvider>
+          </BrowserRouter>
+        </UserContext.Provider>
+      </ShoppingCartContextProvider>
+    </ToastContextProvider>
   );
 }
 

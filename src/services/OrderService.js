@@ -1,5 +1,5 @@
-function getAllOrders(){
-    return fetch('http://localhost:8080/orders')
+function getOrdersByStatus(orderStatus){
+    return fetch(`http://localhost:8080/orders?status=${orderStatus}`)
 }
 
 function getOrderByOrderId(orderId){
@@ -20,11 +20,22 @@ function addOrder(order) {
     })
 }
 
+function updateOrder(order) {
+    return fetch(`http://localhost:8080/orders/${order.id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(order)
+    })
+}
+
 const orderService = {
-    getAllOrders,
+    getOrdersByStatus,
     getOrderByOrderId,
     getOrdersByUserId,
-    addOrder
+    addOrder,
+    updateOrder
 }
 
 export default orderService

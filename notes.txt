@@ -5,6 +5,7 @@ BookListComponent -> heading sholud be two lines long and truncated with ellipse
 Navigation -> Remove Books; Orders should be visible only for admin; and add users -> visible for admins; authors -> visible for everybody
 Make data validation for all forms and entities
 fix the clicking of the buttons
+shoppingCart should be able to be open from the side
 Make the Spring Reporistory to read and write from file
 connect db
 input 20 000 000 records per enitity in the db
@@ -16,3 +17,33 @@ Shift from using the browser storage to using UserContext
 Change Bootstap components to React-Bootstap Components
 https://www.thecommerceshop.com/blog/an-ultimate-guide-to-optimizing-your-shopping-cart-checkouts-to-improve-conversion-rate/
 BookListComponent -> add buttons for buy, favourite, gift
+address localization -> address input fields change based on the user's country
+verification either phone or email
+warning on registration page to use active phone/email
+make cron job to simulate user activity trough the day and randomly create user/guest and place random orders
+ability to cancel the order from admin and user side
+ability to manipulate the ordered items on the Checkout Page
+ability to show more than 1 item in the carousel on the Checkout Page
+checkout fix toFidex(2) not rounding properly
+after you register you are automatically logged
+ability to use guest account
+terms and conditions
+faq
+shipping details such as delivery time etc..
+options on shipping, such as expedite..
+ability to track the order for guest accounts & user accounts via email
+ability to track the order status via MyOrders for users
+add chat for support + contact us page
+add chat for chatting with other users + ability to add users as friends
+no orders should be displayed when there have been no orders
+filter and search for past orders
+add algorithm to serve first the most valued and the most loyal customers
+add field to add the tracking number of the order
+add statuses status
+add shipped status
+ability for disconts and promotions
+make it screenreader accessible
+phone number should have dropdown with the code and explanation how to enter your phone number
+add state field to the register forms for shipping and billing
+the user register form should work with either the phone or the email address
+phone / email validation to finish the user registration

@@ -1,4 +1,4 @@
-import './HomePage.css'
+import { useEffect, useState } from 'react';
 
 import Pagination from '../Pagination/Pagination'
 import Sidebar from '../Sidebar/Sidebar';
@@ -6,9 +6,8 @@ import SubNavigationButton from '../Buttons/SubNavigationButton/SubNavigationBut
 import BookList from '../BookList/BookList';
 
 import bookService from '../../services/BookService';
-import PrimaryButton from '../Buttons/PrimaryButton/PrimaryButton';
-import OpenShoppingCartButton from '../Buttons/OpenShoppingCartButton/OpenShoppingCartButton';
-import { useEffect, useState } from 'react';
+
+import './HomePage.css'
 
 function HomePage() {
     let [books, setBooks] = useState([])
@@ -27,7 +26,7 @@ function HomePage() {
             </div>
             <div className='row'>
                 <div className='col book-list-wrapper'>
-                    <BookList data={books}></BookList>
+                    <BookList data={books} aria-label={"latest articles"}></BookList>
                 </div>
             </div>
             <div className='row'>

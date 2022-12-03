@@ -6,11 +6,10 @@ import { useContext } from 'react'
 import { ShoppingCartContext } from '../../contexts/ShoppingCartContext.js'
 
 
-function ShoppingCartOffCanvasList(props) {
+function ShoppingCartOffCanvasList() {
     let shoppingCartContext = useContext(ShoppingCartContext)
 
     function removeItem(index){
-        console.log(index)
         shoppingCartContext.removeFromShoppingCart(index)
     }
 
@@ -20,7 +19,7 @@ function ShoppingCartOffCanvasList(props) {
             ?
             shoppingCartContext.shoppingCart.map((shoppingCartItem, index) => {
                 return <li className='list-group-item shopping-cart-item-wrapper' key={index}>
-                    <ShoppingCartOffCanvasItem data={shoppingCartItem} onRemove={event => removeItem(index)} />
+                    <ShoppingCartOffCanvasItem data={shoppingCartItem} onRemove={() => removeItem(index)} />
                 </li>
 
             })

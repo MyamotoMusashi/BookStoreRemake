@@ -2,7 +2,6 @@ import { useSearchParams } from 'react-router-dom'
 
 import ProfileInfo from "../ProfileInfo/ProfileInfoPage"
 import ProfileOrders from "../ProfileOrders/ProfileOrders";
-import SubNavigationButton from "../../../Buttons/SubNavigationButton/SubNavigationButton"
 import EditProfileInfo from "../EditProfileInfo/EditProfileInfo";
 
 function ProfilePage() {

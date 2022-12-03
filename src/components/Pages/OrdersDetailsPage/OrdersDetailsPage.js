@@ -8,6 +8,8 @@ import ShippingInformationForm from "../../Forms/ShippingInformationForm/Shippin
 import UserInformationForm from "../../Forms/UserInformationForm/UserInformationForm"
 import OrderOverviewItem from "../../OrderOverviewItem/OrderOverviewItem"
 import ProfileOrderItemList from "../Profile/ProfileOrders/ProfileOrderItem/ProfileOrderItemList/ProfileOrderItemList"
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 import './OrdersDetailsPage.css'
 
@@ -25,7 +27,6 @@ function OrdersDetailsPage() {
                 return orderAsync
             })
             .then((data) => {
-                console.log(data)
                 userService.getUserByIDSpring(data?.userId)
                     .then(async data => {
                         user = await data.json()
@@ -35,12 +36,19 @@ function OrdersDetailsPage() {
             })
     }, [])
 
+    function processOrder(orderStatus) {
+        order.status = orderStatus
+        orderService.updateOrder(order).then(async (data) => {
+            setOrder(await data.json())
+        })
+    }
+
     if (isLoaded) {
         return <>
             <div className='row profile-page-navigation'>
-                <div className='col-2'><SubNavigationButton to="?status=notProcessed" text="Not Processed"></SubNavigationButton></div>
-                <div className='col-2'><SubNavigationButton to="?status=processed" text="Processed"></SubNavigationButton></div>
-                <div className='col-2'><SubNavigationButton to="?status=completed" text="Completed"></SubNavigationButton></div>
+                <div className='col-2'><SubNavigationButton to="/orders?status=NotProcessed" text="Not Processed"></SubNavigationButton></div>
+                <div className='col-2'><SubNavigationButton to="/orders?status=Processed" text="Processed"></SubNavigationButton></div>
+                <div className='col-2'><SubNavigationButton to="/orders?status=Completed" text="Completed"></SubNavigationButton></div>
             </div>
             <div className='row align-items-start'>
                 <div className="col-2">
@@ -50,22 +58,28 @@ function OrdersDetailsPage() {
                     <div className="row">
                         <div className="col order-secondary-information">
                             <p>History</p>
-                            <p>Status</p>
+                            <DropdownButton id="dropdown-item-button" title="Status">
+                                <Dropdown.ItemText>Current Status is: {order.status}</Dropdown.ItemText>
+                                <Dropdown.Item as="button" onClick={() => processOrder("Processed")}>Mark as Processed</Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={() => processOrder("Completed")}>Mark as Completed</Dropdown.Item>
+                                <Dropdown.Item as="button" onClick={() => processOrder("NotProcessed")}>Mark as Not Processed</Dropdown.Item>
+                            </DropdownButton>
                             <p>Note</p>
                         </div>
                     </div>
                 </div>
                 <div className="col-10">
-                    <UserInformationForm basic defaultValues={user}/>
-                    <ShippingInformationForm defaultValues={user.shippingInformation}/>
-                    <BillingInformationForm defaultValues={user.billingInformation}/>
+                    <UserInformationForm basic defaultValues={user} />
+                    <ShippingInformationForm defaultValues={user.shippingInformation} />
+                    <BillingInformationForm defaultValues={user.billingInformation} />
                     <div className="row">
                         <div className="col">
-                            <ProfileOrderItemList order={order} />
+                            <ProfileOrderItemList order={order.itemsOrdered} />
                         </div>
                     </div>
                 </div>
             </div>
+
         </>
     }
 }

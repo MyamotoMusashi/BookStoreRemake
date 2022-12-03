@@ -1,7 +1,7 @@
-import './BillingInformationForm.css'
-
-import Input from "../../Inputs/Input/Input"
+import { bool, object } from 'prop-types'
 import ShippingInformationForm from '../ShippingInformationForm/ShippingInformationForm'
+
+import './BillingInformationForm.css'
 
 function BillingInformationForm(props) {
     return <div className="row billing-information-form">
@@ -17,9 +17,15 @@ function BillingInformationForm(props) {
             </div>
         </div>
         <div className='col-12'>
-            <ShippingInformationForm defaultValues={props.defaultValues} readOnly={props.readOnly || null}/>
+            <ShippingInformationForm defaultValues={props.defaultValues} readOnly={props.readOnly || null} react/>
         </div>
     </div>
 }
+
+BillingInformationForm.propTypes = {
+    readOnly: bool,
+    defaultValues: object
+}
+
 
 export default BillingInformationForm

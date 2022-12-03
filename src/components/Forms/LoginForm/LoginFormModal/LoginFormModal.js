@@ -1,28 +1,31 @@
-import { Modal } from "react-bootstrap";
-
-import SecondaryButton from "../../../Buttons/SecondaryButton/SecondaryButton"
-import LoginForm from "../LoginForm/LoginForm"
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
-import './LoginFormModal.css'
-import { useContext, useState } from "react";
+import { Modal } from "react-bootstrap";
+
+import LoginForm from "../LoginForm/LoginForm"
+import SecondaryButton from "../../../Buttons/SecondaryButton/SecondaryButton"
+
 import { UserContext } from "../../../../App";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContext";
+
+import './LoginFormModal.css'
 
 function LoginFormModal() {
     const navigate = useNavigate()
-    const [show, setShow] =  useState(true)
     const userContext = useContext(UserContext)
+    const shoppingCartContext = useContext(ShoppingCartContext)
 
     const registerUser = () => {
+        userContext.toggleShowLogin()
+        shoppingCartContext.handleClose()
         navigate('/users/register?type=user')
     }
 
     const registerGuest = () => {
+        userContext.toggleShowLogin()
+        shoppingCartContext.handleClose()
         navigate('/users/register?type=guest')
-    }
-
-    function handleClose(){
-        setShow(false)
     }
 
     return <Modal show={userContext.show} id="loginFormModal" centered>

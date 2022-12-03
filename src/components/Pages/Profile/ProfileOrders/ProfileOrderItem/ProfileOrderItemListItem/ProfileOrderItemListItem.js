@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
-import BookItem from '../../../../../BookItem/BookItem'
+import { object } from 'prop-types'
+
 import './ProfileOrderItemListItem.css'
 
 function ProfileOrderItemListItem(props) {
@@ -13,6 +14,10 @@ function ProfileOrderItemListItem(props) {
             <p className=''>${props.book.book.price} x {props.book.quantity}</p>
         </div>
     </li>
+}
+
+ProfileOrderItemListItem.propTypes = {
+    book: object
 }
 
 export default ProfileOrderItemListItem

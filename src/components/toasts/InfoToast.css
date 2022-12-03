@@ -1,0 +1,25 @@
+
+.toast-header, .toast-body {
+    background-color: #81B861;
+    color: yellow;
+}
+
+.toast-body {
+    color: white;
+}
+
+.toast-body a {
+    color: yellow;
+}
+
+.bg-color{
+    background-color: #729679;
+  }
+  
+  .primary-color{
+    background-color: #E1AC27;
+  }
+  
+  .secondary-color{
+    background-color: #81B861;
+  }

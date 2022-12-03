@@ -1,9 +1,11 @@
+import { object } from "prop-types"
+
 import ProfileOrderItemList from "./ProfileOrderItemList/ProfileOrderItemList"
 import OrderOverviewItem from "../../../../OrderOverviewItem/OrderOverviewItem"
+
 import './ProfileOrderItem.css'
 
 function ProfileOrderItem(props) {
-    console.log(props)
     return <li className="list-group-item profile-order-item">
         <section className="row">
             <OrderOverviewItem className="col-2 profile-order-item-list-overview" order={props.order}/>
@@ -12,6 +14,10 @@ function ProfileOrderItem(props) {
             </div>
         </section>
     </li>
+}
+
+ProfileOrderItem.propTypes = {
+    order: object
 }
 
 export default ProfileOrderItem

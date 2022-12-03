@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import ProfileOrderItemList from "../Profile/ProfileOrders/ProfileOrderItem/ProfileOrderItemList/ProfileOrderItemList"
 import UserInformationForm from "../../Forms/UserInformationForm/UserInformationForm"
 import ShippingInformationForm from "../../Forms/ShippingInformationForm/ShippingInformationForm"
 import BillingInformationForm from "../../Forms/BillingInformationForm/BillingInformationForm"
@@ -7,13 +6,24 @@ import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton"
 import orderService from "../../../services/OrderService"
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext"
 import { useNavigate } from "react-router-dom"
+import ProfileOrderItem from "../Profile/ProfileOrders/ProfileOrderItem/ProfileOrderItem"
+import { ToastContext } from "../../contexts/ToastContextProvider"
 
 function CheckoutPage() {
     let user = JSON.parse(sessionStorage.getItem('bookstore-all'))
     let shoppingCart = useContext(ShoppingCartContext)
+    let toastContext = useContext(ToastContext)
+    let totalPrice = 0
+    shoppingCart.shoppingCart.forEach(item => {
+        totalPrice = totalPrice + (item.book.price * item.quantity)
+    });
     let data = {
-        booksOrdered: shoppingCart.shoppingCart
+        userId: user.id,
+        itemsOrdered: shoppingCart.shoppingCart,
+        shippingInformation: user.shippingInformation,
+        totalPrice: totalPrice.toFixed(2)
     }
+    console.log(data)
     let navigate = useNavigate()
 
     function submitOrder() {
@@ -27,6 +37,7 @@ function CheckoutPage() {
         orderService.addOrder(order)
             .then(() => {
                 shoppingCart.clearShoppingCart()
+                toastContext.displayMessage('order successfully placed')
                 navigate('/')
             })
     }
@@ -50,7 +61,7 @@ function CheckoutPage() {
                     </div>
                 </div>
             </div>
-            <ProfileOrderItemList order={data.booksOrdered} />
+            <ProfileOrderItem order={data}/>
         </div>
         <div className="row">
             <div className="col">

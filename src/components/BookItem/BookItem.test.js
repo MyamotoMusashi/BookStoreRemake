@@ -1,9 +1,7 @@
-import { render, screen } from "@testing-library/react"
-import { BrowserRouter } from "react-router-dom"
-import { Context } from "../../App"
-import ShoppingCartOffCanvas from "../ShoppingCartOffCanvas/ShoppingCartOffCanvas"
+import { getByTestId, render, screen } from "@testing-library/react"
+import { BrowserRouter, Link } from "react-router-dom"
+import AddToShoppingCartButton from "../Buttons/AddToShoppingCartButton/AddToShoppingCartButton"
 import BookItem from "./BookItem"
-
 
 beforeEach(() => {
     let data = {
@@ -17,29 +15,100 @@ beforeEach(() => {
 
     render(
         <BrowserRouter>
-            <Context.Provider value={
-                {
-                    shoppingCart: {}
-                }
-            }>
-                <BookItem data={data} />
-                <ShoppingCartOffCanvas></ShoppingCartOffCanvas>
-            </Context.Provider>
+            <BookItem data={data} />
         </BrowserRouter>
     )
 
 })
 
-it("BookItem has className = book-item", () => {
+it("Bookitem root is <article>", () => {
+    const bookItem = screen.getByTestId("book-item")
+    expect(bookItem.tagName).toBe("ARTICLE")
+})
+
+it("BookItem root has className = book-item", () => {
     const bookItem = screen.getByTestId("book-item")
     expect(bookItem.classList.contains('book-item')).toBe(true)
 })
 
-it("BookItem display properly", () => {
+it("BookItem root has <img> child", () => {
+  const bookItem = screen.getByTestId("book-item")
+  const img = screen.getByTestId("book-item-img")
+
+  expect(bookItem).toContainElement(img)
+})
+
+it("BookItem root has <h2> child", () => {
+ const bookItem = screen.getByTestId("book-item")
+ const h2 = screen.getByTestId("book-item-h2")
+
+ expect(bookItem).toContainElement(h2)
+})
+
+it("BookItem root has <h3> child", () => {
     const bookItem = screen.getByTestId("book-item")
-    
+    const h3 = screen.getByTestId("book-item-h3")
+
+    expect(bookItem).toContainElement(h3)
+})
+
+it("BookItem root has overview <p>", () => {
+    const bookItem = screen.getByTestId("book-item")
+    const bookOverview = screen.getByTestId("book-item-overview")
+
+    expect(bookItem).toContainElement(bookOverview)
+})
+
+it("BookItem root has price <p>", () => {
+    const bookItem = screen.getByTestId("book-item")
+    const bookPrice = screen.getByTestId("book-item-price")
+
+    expect(bookItem).toContainElement(bookPrice)
+})
+
+it("BookItem root has 6 children", () => {
+    const bookItem = screen.getByTestId("book-item")
+
     expect(bookItem.children.length == 6).toBe(true)
 })
+
+it("BookItem img is <img>", () => {
+    const bookImg = screen.getByTestId("book-item-img")
+    
+    expect (bookImg.tagName).toBe("IMG")
+})
+
+it("BookItem <img> has className = book-cover", () => {
+    const bookImg = screen.getByTestId("book-item-img")
+    
+    expect(bookImg.classList.contains("book-cover")).toBe(true)
+})
+
+it("BookItem <h2> to be <h2>", () => {
+    const h2 = screen.getByTestId("book-item-h2")
+
+    expect(h2.tagName).toBe("H2")
+})
+
+it("BookItem <h2> has className = book-heading", () => {
+    const h2 = screen.getByTestId("book-item-h2")
+
+    expect(h2.classList.contains("book-heading")).toBe(true)
+})
+
+it("BookItem <h2> has className = text-truncate", () => {
+    const h2 = screen.getByTestId("book-item-h2")
+
+    expect(h2.classList.contains("text-truncate")).toBe(true)
+})
+
+it("BookItem <h2> has className = text-break", () => {
+    const h2 = screen.getByTestId("book-item-h2")
+
+    expect(h2.classList.contains("text-break")).toBe(true)
+})
+
+
 
 
 

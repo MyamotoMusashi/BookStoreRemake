@@ -27,9 +27,11 @@ function Navigation() {
 
     return <nav>
         <Button to="/" text="Home"></Button>
-        <Button text="Books"></Button>
         {isUserAdmin ?
-            <Button to="/orders" text="Orders"></Button>
+            <>
+                <Button to="/orders?status=NotProcessed" text="Orders"></Button>
+                <Button to="/users" text="Users"></Button>
+            </>
             : <></>}
         {isUserLogged ?
             <>
@@ -50,7 +52,7 @@ function Navigation() {
                 </Dropdown>
             </>
             :
-            <Button to="#loginFormModal" text="Login" onClick={userContext.toggleShowLogin}></Button>
+            <Button to="#loginFormModal" text="Login / Register" onClick={userContext.toggleShowLogin}></Button>
 
         }
         <OpenShoppingCartButton />

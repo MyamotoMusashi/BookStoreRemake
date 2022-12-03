@@ -1,3 +1,5 @@
+import { element } from 'prop-types'
+import { string } from 'prop-types'
 import './BasicList.css'
 
 function BasicList(props) {
@@ -5,12 +7,17 @@ function BasicList(props) {
 
 
     return <ul className={myClassName.trim()}>
-        {props.children.map((item) => {
-            return <li className="col-2 list-group-item basic-list-item">
+        {props.children.map((item, index) => {
+            return <li className="col-2 list-group-item basic-list-item" key={index}>
                 {item}
             </li>
         })}
     </ul>
+}
+
+BasicList.propTypes = {
+    className: string,
+    children: element
 }
 
 export default BasicList

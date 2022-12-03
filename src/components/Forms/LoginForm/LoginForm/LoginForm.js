@@ -36,7 +36,7 @@ function LoginForm() {
     return <>
         <form action="" className='login-form'>
             <input type="text" className="login-form-input" placeholder='Username' ref={usernameInput} />
-            <input type="text" className="login-form-input" placeholder='Password' ref={passwordInput} />
+            <input type="password" className="login-form-input" placeholder='Password' ref={passwordInput} />
         </form>
         <button className="forgotten-password-btn">Forgotten password?</button>
         <PrimaryButton text="Login" onClick={onLogin} />

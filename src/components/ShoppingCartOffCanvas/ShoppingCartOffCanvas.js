@@ -1,35 +1,13 @@
+/* eslint-disable no-undef */
 import './ShoppingCartOffCanvas.css'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 
 import PrimaryButton from '../Buttons/PrimaryButton/PrimaryButton';
 import ShoppingCartOffCanvasList from './ShoppingCartOffCanvasList/ShoppingCartOffCanvasList';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { ShoppingCartContext } from '../contexts/ShoppingCartContext.js'
-
-const options = [
-    {
-        name: 'Enable backdrop (default)',
-        scroll: false,
-        backdrop: true,
-    },
-    {
-        name: 'Disable backdrop',
-        scroll: false,
-        backdrop: false,
-    },
-    {
-        name: 'Enable body scrolling',
-        scroll: true,
-        backdrop: false,
-    },
-    {
-        name: 'Enable both scrolling & backdrop',
-        scroll: true,
-        backdrop: true,
-    },
-];
 
 function ShoppingCartOffCanvas(props) {
     let user = sessionStorage.getItem('bookstore-all')

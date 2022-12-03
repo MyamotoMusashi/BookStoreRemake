@@ -1,4 +1,6 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import PrimaryButton from "../PrimaryButton/PrimaryButton.js"
 import { ShoppingCartContext } from '../../contexts/ShoppingCartContext';
 
@@ -13,6 +15,10 @@ function AddToShoppingCartButton(props) {
     }
 
     return <PrimaryButton text="Add to Cart" onClick={addToShoppingCart}></PrimaryButton>
+}
+
+AddToShoppingCartButton.propTypes = {
+    targetData: PropTypes.object
 }
 
 export default AddToShoppingCartButton

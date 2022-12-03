@@ -29,7 +29,18 @@ function registerUser(user) {
 }
 
 function registerUserSpring(user) {
-    return fetch(`http://localhost:8080/users`, {
+    return fetch(`http://localhost:8080/users?type=user`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+}
+
+function registerGuestSpring(user) {
+    
+    return fetch(`http://localhost:8080/users?type=guest`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -55,12 +66,14 @@ function updateUserSpring(userId, changedInputs) {
 
 const userService = {
     getAllUsers,
+    getAllUsersSpring,
     getUserByID,
     getUserByIDSpring,
     authenticateUser,
     authenticateUserSpring,
     registerUser,
     registerUserSpring,
+    registerGuestSpring,
     updateUser,
     updateUserSpring
 }

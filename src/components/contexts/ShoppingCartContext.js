@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import { createContext, useState } from "react";
 
 export const ShoppingCartContext = createContext()
@@ -60,4 +61,8 @@ export function ShoppingCartContextProvider(props) {
     }>
         {props.children}
     </ShoppingCartContext.Provider>
+}
+
+ShoppingCartContextProvider.propTypes = {
+    children: element
 }
