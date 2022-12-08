@@ -33,7 +33,9 @@ function ShoppingCartOffCanvas(props) {
             </Offcanvas.Header>
             <Offcanvas.Body className='offcanvas-body'>
                 <ShoppingCartOffCanvasList />
-                <PrimaryButton id='checkout-btn' text="CHECKOUT" onClick={checkout}></PrimaryButton>
+                <PrimaryButton id='checkout-btn' text="CHECKOUT" onClick={checkout}>
+                    <i className="mx-3 fa fa-arrow-right" aria-hidden="true"></i>
+                </PrimaryButton>
             </Offcanvas.Body>
         </Offcanvas>
     </>

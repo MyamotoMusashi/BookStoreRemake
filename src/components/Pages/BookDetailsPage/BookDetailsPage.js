@@ -1,10 +1,12 @@
-import './BookDetailsPage.css'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
+import { Row, Col } from 'react-bootstrap'
+
+import AddToShoppingCartButton from '../../Buttons/AddToShoppingCartButton/AddToShoppingCartButton'
 
 import bookService from '../../../services/BookService'
 
-import { useParams } from 'react-router-dom'
-import AddToShoppingCartButton from '../../Buttons/AddToShoppingCartButton/AddToShoppingCartButton'
-import { useEffect, useState } from 'react'
+import './BookDetailsPage.css'
 
 function BookDetailsPage() {
     let id = useParams().bookId
@@ -21,27 +23,27 @@ function BookDetailsPage() {
 
     if (isLoaded) {
         return <>
-            <div className="col-4 book-details-image-wrapper">
-                <img src={book.coverUrl} alt="" srcSet="" className='book-details-image' />
-            </div>
-            <div className="col-8 book-details-main-content">
-                <div className='row'>
+            <Col className='book-details-wrapper'>
+                <Row>
                     <div className='col book-details-main-content-header'>
                         <p>{book.title}</p>
                         <p>{book.author}</p>
                     </div>
-                </div>
-                <div className='row'>
-                    <div className='col-8 book-details-overview-wrapper'>
+                </Row>
+                <Row>
+                    <Col md={3} className="book-details-image-wrapper">
+                        <img src={book.coverUrl} alt="" srcSet="" className='book-details-image' />
+                    </Col>
+                    <Col md={6} className="book-details-main-content">
                         <p className='book-details-overview overflow-scroll'>{book.summary}</p>
-                    </div>
-                    <div className='col-4 book-details-additional-details-wrapper'>
+                    </Col>
+                    <Col md={3} className='book-details-additional-details-wrapper'>
                         <p>Price: $10.96</p>
                         <p>In Stock: 56</p>
                         <AddToShoppingCartButton targetData={book} />
-                    </div>
-                </div>
-            </div>
+                    </Col>
+                </Row>
+            </Col>
         </>
     }
 }

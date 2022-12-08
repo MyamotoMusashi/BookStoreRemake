@@ -2,11 +2,10 @@ import { useSearchParams } from 'react-router-dom'
 
 import ProfileInfo from "../ProfileInfo/ProfileInfoPage"
 import ProfileOrders from "../ProfileOrders/ProfileOrders";
-import EditProfileInfo from "../EditProfileInfo/EditProfileInfo";
 
 function ProfilePage() {
 
-    let [searchParams, setSearchParams] = useSearchParams();
+    let [searchParams] = useSearchParams();
 
     const profileInfoPage = <div className='col-12 .profile-page-main'>
         <ProfileInfo />
@@ -16,18 +15,11 @@ function ProfilePage() {
         <ProfileOrders />
     </div>
 
-    const editProfileInfoPage = <div className='col-12 .profile-page-main'>
-        <EditProfileInfo />
-    </div>
-
     if (searchParams.get('get') === 'profileInfo') {
         return profileInfoPage
     }
     else if (searchParams.get('get') === 'myOrders') {
         return profileOrdersPage
-    }
-    else if (searchParams.get('put') === 'profileInfo') {
-        return editProfileInfoPage
     }
 }
 

@@ -1,21 +1,24 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Row, Col } from "react-bootstrap"
 
 import PrimaryButton from "../../../Buttons/PrimaryButton/PrimaryButton"
 import userProfilePicture from './user-profile-picture.jpg'
 import UserInformationForm from "../../../Forms/UserInformationForm/UserInformationForm"
-import ShippingInformationForm from '../../../Forms/ShippingInformationForm/ShippingInformationForm'
+import AddressInformationForm from "../../../Forms/AddressInformationForm/AddressInformationForm"
 
 import userService from "../../../../services/userService"
 
 import './ProfileInfoPage.css'
 
 function ProfileInfoPage() {
-    let navigate = useNavigate()
     let { userId } = useParams()
     let [user, setUser] = useState()
+    let changedInputs = {}
+    let changedUserInputs = {}
+    let changedShippingInputs = {}
     let [isLoaded, setIsLoaded] = useState(false)
+    let [readOnly, setReadOnly] = useState(true)
 
     useEffect(() => {
         userService.getUserByIDSpring(userId).then(async res => {
@@ -25,11 +28,37 @@ function ProfileInfoPage() {
     }, [])
 
     function onEdit() {
-        navigate(`/users/${user.id}?put=profileInfo`)
+        setReadOnly(false)
+    }
+
+    function onSave() {
+
+        changedInputs = changedUserInputs
+        changedInputs.shippingInformation = changedShippingInputs
+        userService.updateUserSpring(userId, changedInputs)
+            .then(() => {
+                setReadOnly(true)
+            })
+    }
+
+    function onCancel() {
+        setReadOnly(true)
+    }
+
+    function handleUserInputChange(e) {
+        changedUserInputs = e
+    }
+
+    function handleShippingInputChange(e) {
+        changedShippingInputs = e
+    }
+
+    function handleBillingInputChange() {
+
     }
 
     if (isLoaded) {
-        return <Row className='profile-page-wrapper align-items-start'>
+        return <Row className={readOnly ? 'profile-page-wrapper align-items-start' : 'profile-page-wrapper align-items-start editable'}>
             <Col md={2} className='profile-page'>
                 <Row>
                     <Col>
@@ -46,17 +75,40 @@ function ProfileInfoPage() {
                 <Row>
                     <Col>
                         <p>User Information:</p>
-                        <UserInformationForm readOnly reactExtended defaultValues={user} />
+                        {readOnly
+                            ? <UserInformationForm readOnly react defaultValues={user} />
+                            : <UserInformationForm react defaultValues={user}  onChange={handleUserInputChange} editable/>
+                        }
                     </Col>
                 </Row>
                 <Row>
                     <p>Shipping Information</p>
-                    <ShippingInformationForm react defaultValues={user?.shippingInformation} readOnly />
+                    {readOnly
+                        ? <AddressInformationForm react defaultValues={user?.shippingInformation} readOnly />
+                        : <AddressInformationForm react defaultValues={user?.shippingInformation}  onChange={handleShippingInputChange}/>
+                    }
                 </Row>
                 <Row>
                     <p>Billing Information</p>
-                    <ShippingInformationForm react defaultValues={user?.billingInformation} readOnly />
+                    {readOnly
+                        ? <AddressInformationForm react defaultValues={user?.shippingInformation} readOnly />
+                        : <AddressInformationForm react defaultValues={user?.shippingInformation}  onChange={handleBillingInputChange}/>
+                    }
                 </Row>
+                {readOnly
+                    ? <></>
+                    :
+                    <>
+                        <Row>
+                            <Col md={2} className="offset-4">
+                                    <button onClick={onCancel}>Cancel</button>
+                            </Col>
+                            <Col md={2}>
+                                <PrimaryButton text="Save" onClick={onSave} />
+                            </Col>
+                        </Row>
+                    </>
+                }
             </Col>
         </Row>
     }

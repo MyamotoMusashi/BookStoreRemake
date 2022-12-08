@@ -19,7 +19,10 @@ function ProfileOrders() {
     if (isLoaded) {
         return <div className="row">
             <div className="col">
-                <ProfileOrdersList orders={orders}/>
+                {orders.length > 0
+                    ? <ProfileOrdersList orders={orders} />
+                    : <p>You dont have any orders yet.</p>
+                }
             </div>
         </div>
     }

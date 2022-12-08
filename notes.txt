@@ -2,9 +2,8 @@ BookDetailsComponent -> Click on Author -> should lead you to the author page wh
 BookDetailsComponent -> horizontally center the title and the author
 BookListComponent -> make the title and author wrapper a certain width and heigh. Clip the author name and title after certain characters not to go outside of the fixed width and height
 BookListComponent -> heading sholud be two lines long and truncated with ellipse
-Navigation -> Remove Books; Orders should be visible only for admin; and add users -> visible for admins; authors -> visible for everybody
+Navigation ->  Authors -> visible for everybody
 Make data validation for all forms and entities
-fix the clicking of the buttons
 shoppingCart should be able to be open from the side
 Make the Spring Reporistory to read and write from file
 connect db
@@ -35,7 +34,7 @@ ability to track the order for guest accounts & user accounts via email
 ability to track the order status via MyOrders for users
 add chat for support + contact us page
 add chat for chatting with other users + ability to add users as friends
-no orders should be displayed when there have been no orders
+more like a online reading book -> users can get togehter to read and listen to music and discuss a book
 filter and search for past orders
 add algorithm to serve first the most valued and the most loyal customers
 add field to add the tracking number of the order
@@ -47,3 +46,8 @@ phone number should have dropdown with the code and explanation how to enter you
 add state field to the register forms for shipping and billing
 the user register form should work with either the phone or the email address
 phone / email validation to finish the user registration
+zoom in button to enlarge the book item view + audio button to start reading the description
+tracker at the navigation to outline the process -> books -> checkout -> payment
+write unit, e2e and integration tests
+facebook, google + other social media as auth provider
+button to save the shopping cart for latter -> possibly creating an account

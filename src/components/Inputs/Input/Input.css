@@ -7,7 +7,3 @@
 .form-input:focus {
     outline: none;
 }
-
-.editable {
-    background-color: white;
-}

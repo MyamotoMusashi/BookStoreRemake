@@ -4,15 +4,15 @@
 
 .shopping-cart-item-wrapper {
     border: none;
-    background-color: white;
+    background-color: #729679;
     border-bottom: solid orange 3px;
 }
 
 .shopping-cart-item-wrapper:last-child {
-    border: none;
     margin-bottom: 20px;
 }
 
-.shopping-cart-list-only-child {
-    margin-top: 50%;
+#empty-cart-message {
+    margin-top: 75%;
+    min-height: 50%;
 }

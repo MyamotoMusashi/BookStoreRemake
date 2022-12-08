@@ -36,6 +36,10 @@ button {
     width: 162px;
 }
 
+button .fa-cart-plus {
+    font-size: large;
+}
+
 .read-more-link {
     color: #E1AC27;
 }

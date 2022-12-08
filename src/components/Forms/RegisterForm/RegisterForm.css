@@ -1,9 +1,8 @@
 .user-register-form-wraper {
-    background-color: white;
 }
 
 .user-register-form {
-    background-color: white;
+    background-color: inherit;
     margin-top: 15px;
     margin-bottom: 15px;
 }

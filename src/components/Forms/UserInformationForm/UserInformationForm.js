@@ -39,97 +39,70 @@ function UserInformationForm(props) {
     }
 
     if (props.react) {
-        return <Form onChange={handleUserInputChange}>
+        return <Form onChange={handleUserInputChange} className={props.editable ? "user-information-form editable" : "user-information-form"}>
             <Col md={8} className="offset-2">
                 <Form.Group className="mb-3 user-information-form-username-wrapper" controlId="formBasicEmail">
-                    <Form.Control name="user-information-form-username-input" type="text" placeholder="Username" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} required />
-                    <Form.Control.Feedback type="invalid">
-                        Please choose a username.
-                    </Form.Control.Feedback>
+                    <Form.Control name="user-information-form-username-input" type="text" placeholder="Username" className='form-input' defaultValue={props.defaultValues?.username} disabled={!props.reactExtended} onChange={props.onChange} required />
+                    <Form.Control.Feedback type="invalid">Please choose a username.</Form.Control.Feedback>
                 </Form.Group>
             </Col>
-            <Row>
+            {props.reactExtended ? <Row>
                 <Col md={4} className="offset-2">
                     <Form.Group className="mb-3 user-information-password-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-password-input" type="password" placeholder="Password" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} required />
-                        <Form.Control.Feedback type="invalid">
-                        Please enter a password
-                    </Form.Control.Feedback>
+                        <Form.Control name="user-information-form-password-input" type="password" placeholder="Password" className='form-input' defaultValue={props.defaultValues?.username} disabled={props.readOnly} onChange={props.onChange} required />
+                        <Form.Control.Feedback type="invalid">Please enter a password</Form.Control.Feedback>
                     </Form.Group>
                 </Col>
                 <Col md={4}>
                     <Form.Group className="mb-3 user-information-confirm-password-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-confirm-password-input" type="password" placeholder="Confirm Password" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} required />
-                        <Form.Control.Feedback type="invalid">
-                        Please confirm your password
-                    </Form.Control.Feedback>
+                        <Form.Control name="user-information-form-confirm-password-input" type="password" placeholder="Confirm Password" className='form-input' defaultValue={props.defaultValues?.username} disabled={props.readOnly} onChange={props.onChange} required />
+                        <Form.Control.Feedback type="invalid">Please confirm your password</Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
+            : <></>
+            }
+
             <Row>
                 <Col md={4} className="offset-2">
                     <Form.Group className="mb-3 user-information-form-first-name-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-first-name-input" type="text" placeholder="First Name" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} />
+                        <Form.Control name="user-information-form-first-name-input" type="text" placeholder="First Name" className='form-input' defaultValue={props.defaultValues?.firstName} disabled={props.readOnly} onChange={props.onChange} />
                     </Form.Group>
                 </Col>
                 <Col md={4}>
                     <Form.Group className="mb-3 user-information-form-last-name-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-last-name-input" type="text" placeholder="Last Name" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} />
+                        <Form.Control name="user-information-form-last-name-input" type="text" placeholder="Last Name" className='form-input' defaultValue={props.defaultValues?.lastName} disabled={props.readOnly} onChange={props.onChange} />
                     </Form.Group>
                 </Col>
             </Row>
             <Row>
                 <Col md={4} className="offset-2">
                     <Form.Group className="mb-3 user-information-form-phone-number-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-phone-input" type="number" placeholder="Phone Number" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} />
+                        <Form.Control name="user-information-form-phone-input" type="number" placeholder="Phone Number" className='form-input' defaultValue={props.defaultValues?.phone} disabled={props.readOnly} onChange={props.onChange} />
                     </Form.Group>
                 </Col>
                 <Col md={4}>
                     <Form.Group className="mb-3 user-information-form-email-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-email-input" type="email" placeholder="Email" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} required/>
-                        <Form.Control.Feedback type="invalid">
-                        Please enter an email address
-                    </Form.Control.Feedback>
+                        <Form.Control name="user-information-form-email-input" type="email" placeholder="Email" className='form-input' defaultValue={props.defaultValues?.email} disabled={props.readOnly} onChange={props.onChange} required />
+                        <Form.Control.Feedback type="invalid">Please enter an email address</Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
         </Form>
     }
 
-    if (props.reactExtended) {
-        return <Form onChange={handleUserInputChange} className="user-information-form">
-            <Col md={8} className="offset-2">
-                <Form.Group className="mb-3 user-information-form-username-wrapper" controlId="formBasicEmail">
-                    <Form.Control name="user-information-form-username-input" type="text" placeholder="Username" className='form-input' defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} required />
-                    <Form.Control.Feedback type="invalid">
-                        Please choose a username.
-                    </Form.Control.Feedback>
-                </Form.Group>
-            </Col>
-            <Row>
-                <Col md={4} className="offset-2">
-                    <Form.Group className="mb-3 user-information-form-first-name-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-first-name-input" type="text" placeholder="First Name" className='form-input' defaultValue={props.defaultValues?.firstName} readOnly={props.readOnly} onChange={props.onChange} />
-                    </Form.Group>
-                </Col>
-                <Col md={4}>
-                    <Form.Group className="mb-3 user-information-form-last-name-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-last-name-input" type="text" placeholder="Last Name" className='form-input' defaultValue={props.defaultValues?.lastName} readOnly={props.readOnly} onChange={props.onChange} />
-                    </Form.Group>
-                </Col>
-            </Row>
+    if (props.reactGuest) {
+        return <Form onChange={handleUserInputChange} className="user-information-form editable">
             <Row>
                 <Col md={4} className="offset-2">
                     <Form.Group className="mb-3 user-information-form-phone-number-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-phone-input" type="number" placeholder="Phone Number" className='form-input' defaultValue={props.defaultValues?.phone} readOnly={props.readOnly} onChange={props.onChange} />
+                        <Form.Control name="user-information-form-phone-input" type="number" placeholder="Phone Number" className='form-input' defaultValue={props.defaultValues?.phone} disabled={props.readOnly} onChange={props.onChange} />
                     </Form.Group>
                 </Col>
                 <Col md={4}>
                     <Form.Group className="mb-3 user-information-form-email-wrapper" controlId="formBasicEmail">
-                        <Form.Control name="user-information-form-email-input" type="email" placeholder="Email" className='form-input' defaultValue={props.defaultValues?.email} readOnly={props.readOnly} onChange={props.onChange} required/>
-                        <Form.Control.Feedback type="invalid">
-                        Please enter an email address
-                    </Form.Control.Feedback>
+                        <Form.Control name="user-information-form-email-input" type="email" placeholder="Email" className='form-input' defaultValue={props.defaultValues?.email} disabled={props.readOnly} onChange={props.onChange} required />
+                        <Form.Control.Feedback type="invalid">Please enter an email address</Form.Control.Feedback>
                     </Form.Group>
                 </Col>
             </Row>
@@ -169,6 +142,8 @@ UserInformationForm.propTypes = {
     basic: bool,
     react: bool,
     reactExtended: bool,
+    reactGuest: bool,
+    editable: bool,
     children: element
 }
 

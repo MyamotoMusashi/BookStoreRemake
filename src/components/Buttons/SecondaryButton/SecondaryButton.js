@@ -5,11 +5,15 @@ import './SecondaryButton.css'
 function SecondaryButton(props){
     let text = props.text
 
-    return <button className="secondary-btn" {...props}>{text}</button>
+    return <button className="secondary-btn" {...props}>
+        {text}
+        {props.children}
+        </button>
 }
 
 SecondaryButton.propTypes = {
-    text: PropTypes.string
+    text: PropTypes.string,
+    children: PropTypes.element
 }
 
 export default SecondaryButton

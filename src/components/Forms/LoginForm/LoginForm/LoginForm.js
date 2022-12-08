@@ -1,15 +1,22 @@
-import './LoginForm.css'
+import React, {useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import PrimaryButton from "../../../Buttons/PrimaryButton/PrimaryButton"
-import React, { useContext } from 'react';
+
 import userService from '../../../../services/userService';
+import { UserContext } from "../../../../App";
 import { ShoppingCartContext } from '../../../contexts/ShoppingCartContext';
-import { useState } from 'react';
+
+import './LoginForm.css'
 
 function LoginForm() {
 
+    let navigate = useNavigate()
     let usernameInput = React.createRef()
     let passwordInput = React.createRef()
-    let shoppingCart = useContext(ShoppingCartContext).shoppingCart
+    const userContext = useContext(UserContext)
+    const shoppingCartContext = useContext(ShoppingCartContext)
+    let shoppingCart = shoppingCartContext.shoppingCart
     let [invalid, setInvalild] = useState(false)
 
     const onLogin = () => {
@@ -33,12 +40,18 @@ function LoginForm() {
             })
     }
 
+    const onGuest = () => {
+        userContext.toggleShowLogin()
+        shoppingCartContext.handleClose()
+        navigate('/checkout?type=guest')
+    }
+
     return <>
         <form action="" className='login-form'>
             <input type="text" className="login-form-input" placeholder='Username' ref={usernameInput} />
             <input type="password" className="login-form-input" placeholder='Password' ref={passwordInput} />
         </form>
-        <button className="forgotten-password-btn">Forgotten password?</button>
+        <button className="forgotten-password-btn" onClick={onGuest}>Continue as Guest</button>
         <PrimaryButton text="Login" onClick={onLogin} />
         {invalid
             ? <p className="error">Invalid username or password. Please check your credentials and try again.</p>

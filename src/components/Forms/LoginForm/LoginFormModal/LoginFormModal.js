@@ -25,7 +25,7 @@ function LoginFormModal() {
     const registerGuest = () => {
         userContext.toggleShowLogin()
         shoppingCartContext.handleClose()
-        navigate('/users/register?type=guest')
+        navigate('/checkout?type=guest')
     }
 
     return <Modal show={userContext.show} id="loginFormModal" centered>
@@ -34,7 +34,7 @@ function LoginFormModal() {
         <Modal.Body><LoginForm /></Modal.Body>
         <Modal.Footer>
             <SecondaryButton text="Create an account" onClick={registerUser} data-bs-dismiss="modal" />
-            <SecondaryButton text="Continue as Guest" onClick={registerGuest} data-bs-dismiss="modal" />
+            <SecondaryButton text="Forgotten password?" onClick={registerGuest} data-bs-dismiss="modal" />
         </Modal.Footer>
     </Modal>
 }

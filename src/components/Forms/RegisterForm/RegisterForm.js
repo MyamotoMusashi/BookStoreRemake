@@ -4,18 +4,16 @@ import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Row, Col, Form } from "react-bootstrap"
 
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton"
-import BillingInformationForm from "../BillingInformationForm/BillingInformationForm"
-import ShippingInformationForm from "../ShippingInformationForm/ShippingInformationForm"
+import AddressInformationForm from "../AddressInformationForm/AddressInformationForm"
 import UserInformationForm from "../UserInformationForm/UserInformationForm"
 import GuestInformationForm from "../GuestInformationForm/GuestInformationForm"
 
 import userService from "../../../services/userService"
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext"
-
 import User from "../../../entities/User"
 
-
 import './RegisterForm.css'
+import PersonalInformationForm from "../PersonalInformationForm/PersonalInformationForm"
 
 function RegisterForm() {
 
@@ -74,9 +72,9 @@ function RegisterForm() {
 
     const registerUserForm = <div className="row user-register-form-wrapper">
         <div className="col-6 offset-3 user-register-form">
-            <UserInformationForm extended onChange={handleUserInputChange} />
-            <ShippingInformationForm onChange={handleShippingInputChange} />
-            <BillingInformationForm />
+            <UserInformationForm react reactExtended onChange={handleUserInputChange} />
+            <AddressInformationForm onChange={handleShippingInputChange} />
+            <AddressInformationForm />
             <div className="row user-register-form-register-btn-wrapper">
                 <PrimaryButton text="Register" onClick={registerUser} />
             </div>
@@ -86,18 +84,7 @@ function RegisterForm() {
     const registerReactForm = <Row className="user-register-form-wrapper">
         <Col md={6} className="offset-3 user-register-form">
             <Form noValidate validated={validated}>
-                <Row>
-                    <p className="mt-3">User Information</p>
-                    <UserInformationForm react onChange={handleUserInputChange} />
-                </Row>
-                <Row>
-                    <p className='mt-3'>Shipping Information</p>
-                    <ShippingInformationForm onChange={handleShippingInputChange} react />
-                </Row>
-                <Row>
-                    <p className='mt-3'>Billing Information</p>
-                    <ShippingInformationForm react onChange={handleBillingInputChange} />
-                </Row>
+                <PersonalInformationForm onHandleBillingInputChange={handleBillingInputChange} onHandleShippingInputChange={handleShippingInputChange} onHandleUserInputChange={handleUserInputChange}/>
                 <PrimaryButton text="Register" onClick={registerUser} />
             </Form>
         </Col>
@@ -106,8 +93,8 @@ function RegisterForm() {
     const registerGuestForm = <div className="row user-register-form-wrapper">
         <div className="col-6 offset-3 user-register-form">
             <GuestInformationForm onChange={handleUserInputChange} />
-            <ShippingInformationForm onChange={handleShippingInputChange} />
-            <BillingInformationForm />
+            <AddressInformationForm onChange={handleShippingInputChange} />
+            <AddressInformationForm />
             <div className="row user-register-form-register-btn-wrapper">
                 <PrimaryButton text="Register" onClick={registerGuest} />
             </div>

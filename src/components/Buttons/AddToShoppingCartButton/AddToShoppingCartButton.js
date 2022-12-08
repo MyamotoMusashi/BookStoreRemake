@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import PrimaryButton from "../PrimaryButton/PrimaryButton.js"
 import { ShoppingCartContext } from '../../contexts/ShoppingCartContext';
 
+import './AddToShoppingCartButton.css'
+
 function AddToShoppingCartButton(props) {
     const shoppingCartData = useContext(ShoppingCartContext)
 
@@ -14,7 +16,8 @@ function AddToShoppingCartButton(props) {
         shoppingCartData.toggleShow()
     }
 
-    return <PrimaryButton text="Add to Cart" onClick={addToShoppingCart}></PrimaryButton>
+    return <PrimaryButton text="Add to Cart " onClick={addToShoppingCart}>
+    </PrimaryButton>
 }
 
 AddToShoppingCartButton.propTypes = {

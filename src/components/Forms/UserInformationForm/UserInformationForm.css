@@ -1,7 +1,7 @@
-.user-information-form {
+.user-information-form .form-input {
     background-color: white;
 }
 
-.user-information-form input {
-    padding-top: 10px;
+.user-information-form .form-input:disabled {
+    background-color: inherit;
 }

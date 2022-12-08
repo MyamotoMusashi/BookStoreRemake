@@ -1,13 +1,13 @@
-import { useContext } from "react"
-import UserInformationForm from "../../Forms/UserInformationForm/UserInformationForm"
-import ShippingInformationForm from "../../Forms/ShippingInformationForm/ShippingInformationForm"
-import BillingInformationForm from "../../Forms/BillingInformationForm/BillingInformationForm"
+import { useNavigate, useSearchParams } from "react-router-dom"
+
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton"
-import orderService from "../../../services/OrderService"
-import { ShoppingCartContext } from "../../contexts/ShoppingCartContext"
-import { useNavigate } from "react-router-dom"
 import ProfileOrderItem from "../Profile/ProfileOrders/ProfileOrderItem/ProfileOrderItem"
+import PersonalInformationForm from "../../Forms/PersonalInformationForm/PersonalInformationForm"
+
+import { useContext } from "react"
 import { ToastContext } from "../../contexts/ToastContextProvider"
+import { ShoppingCartContext } from "../../contexts/ShoppingCartContext"
+import orderService from "../../../services/OrderService"
 
 function CheckoutPage() {
     let user = JSON.parse(sessionStorage.getItem('bookstore-all'))
@@ -18,12 +18,15 @@ function CheckoutPage() {
         totalPrice = totalPrice + (item.book.price * item.quantity)
     });
     let data = {
-        userId: user.id,
+        userId: user?.id,
         itemsOrdered: shoppingCart.shoppingCart,
-        shippingInformation: user.shippingInformation,
+        shippingInformation: user?.shippingInformation,
         totalPrice: totalPrice.toFixed(2)
     }
-    console.log(data)
+
+    let [searchParams] = useSearchParams()
+    let guest = searchParams.get('type') == 'guest'
+
     let navigate = useNavigate()
 
     function submitOrder() {
@@ -33,7 +36,6 @@ function CheckoutPage() {
             shippingInformation: user.shippingInformation
         }
 
-        console.log(order)
         orderService.addOrder(order)
             .then(() => {
                 shoppingCart.clearShoppingCart()
@@ -42,33 +44,22 @@ function CheckoutPage() {
             })
     }
 
-    return <div>
-        <p>Summary of your order below</p>
-        <div className="row">
-
-            <div className="col">
-                <div className="row">
-                    <div className="col">
-                        <UserInformationForm readOnly basic defaultValues={user} />
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col">
-                        <ShippingInformationForm basic defaultValues={user?.shippingInformation} readOnly />
-                    </div>
-                    <div className="col">
-                        <BillingInformationForm defaultValues={user?.billingInformation} readOnly />
-                    </div>
-                </div>
-            </div>
-            <ProfileOrderItem order={data}/>
+    if (user) {
+        return <div>
+            <p>Summary of your order below</p>
+            <PersonalInformationForm readOnly user={user} />
+            <ProfileOrderItem order={data} />
+            <PrimaryButton text="Submit Order" onClick={submitOrder} />
         </div>
-        <div className="row">
-            <div className="col">
-                <PrimaryButton text="Submit Order" onClick={submitOrder} />
-            </div>
+    }
+    else if (guest) {
+        return <div>
+            <p>Summary of your order below</p>
+            <PersonalInformationForm reactGuest user={user} />
+            <ProfileOrderItem order={data} />
+            <PrimaryButton text="Submit Order" onClick={submitOrder} />
         </div>
-    </div>
+    }
 }
 
 export default CheckoutPage

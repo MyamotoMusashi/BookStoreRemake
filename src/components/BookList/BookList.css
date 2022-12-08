@@ -9,9 +9,17 @@
 
 .book-list-item:hover
 {
-    background-color: orange;
+    background-color: #c22b30;
+    background-color: #085a80;
 }
 
 .book-list-item:hover a {
     color: white;
+}
+
+.book-list-item:hover button {
+    background-color: #cd9c52;
+    background-color: white;
+    color: white;
+    color: #085a80;
 }

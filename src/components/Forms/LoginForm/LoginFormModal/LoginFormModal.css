@@ -11,3 +11,11 @@
 .modal-footer {
     justify-content: center;
 }
+
+.modal-body, .modal-footer {
+    background-color: #729679;
+}
+
+.modal-header, .modal-footer {
+    background-color: #E1AC27;
+}
