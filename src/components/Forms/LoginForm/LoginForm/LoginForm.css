@@ -1,13 +1,21 @@
-.login-form  {
+.login-form {
     padding-left: 30%;
     padding-bottom: 5%;
+    color: #e6d4a6;
+    background-color: #bfbfc7;
+    background-color: whitesmoke;
 }
 
 .login-form-input {
     border: none;
     border-bottom: solid orange 3px;
+    border-bottom: solid #e6d4a6 3px;
+    border-bottom: solid #729679 3px;
+    background-color: #d7d7d9;
+    background-color: whitesmoke;
     display: block;
     text-align: center;
+    color: #372e27;
 }
 
 .login-form-input:focus {
@@ -17,4 +25,3 @@
 .error {
     color: red;
 }
-

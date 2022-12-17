@@ -1,5 +1,7 @@
 import { object } from "prop-types"
 
+import { Row, Col } from "react-bootstrap"
+
 import ProfileOrderItemList from "./ProfileOrderItemList/ProfileOrderItemList"
 import OrderOverviewItem from "../../../../OrderOverviewItem/OrderOverviewItem"
 
@@ -7,12 +9,12 @@ import './ProfileOrderItem.css'
 
 function ProfileOrderItem(props) {
     return <li className="list-group-item profile-order-item">
-        <section className="row">
+        <Row>
             <OrderOverviewItem className="col-2 profile-order-item-list-overview" order={props.order}/>
-            <div className="col-10">
+            <Col md={10}>
                 <ProfileOrderItemList order={props.order.itemsOrdered}/>
-            </div>
-        </section>
+            </Col>
+        </Row>
     </li>
 }
 

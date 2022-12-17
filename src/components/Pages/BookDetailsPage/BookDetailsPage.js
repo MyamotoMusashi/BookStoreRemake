@@ -33,14 +33,12 @@ function BookDetailsPage() {
                 <Row>
                     <Col md={3} className="book-details-image-wrapper">
                         <img src={book.coverUrl} alt="" srcSet="" className='book-details-image' />
+                        <p className='book-details-price'>Price: $10.96</p>
+                        <p>In Stock: 56</p>
+                        <AddToShoppingCartButton targetData={book} />
                     </Col>
                     <Col md={6} className="book-details-main-content">
                         <p className='book-details-overview overflow-scroll'>{book.summary}</p>
-                    </Col>
-                    <Col md={3} className='book-details-additional-details-wrapper'>
-                        <p>Price: $10.96</p>
-                        <p>In Stock: 56</p>
-                        <AddToShoppingCartButton targetData={book} />
                     </Col>
                 </Row>
             </Col>

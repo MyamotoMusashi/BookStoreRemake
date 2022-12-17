@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 import Pagination from '../Pagination/Pagination'
 import Sidebar from '../Sidebar/Sidebar';
@@ -19,25 +20,25 @@ function HomePage() {
     })
 
     return <>
-        <div className='col-11 .home-page-main'>
-            <div className='row'>
+        <Col className='home-page-main'>
+            <Row className='home-page-subnavigation'>
                 <div className='col'><SubNavigationButton></SubNavigationButton></div>
                 <div className='col'><input type="text" placeholder='Search' /></div>
-            </div>
-            <div className='row'>
-                <div className='col book-list-wrapper'>
+            </Row>
+            <Row>
+                <Col md={10} className='book-list-wrapper offset-1'>
                     <BookList data={books} aria-label={"latest articles"}></BookList>
-                </div>
-            </div>
-            <div className='row'>
-                <div className='col align-self-center'>
+                </Col>
+                <Col md={1} className='sidebar-wrapper mt-5'>
+                    <Sidebar />
+                </Col>
+            </Row>
+            <Row>
+                <Col className='home-page-footer align-self-center'>
                     <Pagination />
-                </div>
-            </div>
-        </div>
-        <div className='col-1 sidebar-wrapper'>
-            <Sidebar />
-        </div>
+                </Col>
+            </Row>
+        </Col>
     </>
 }
 

@@ -1,7 +1,13 @@
 .user-information-form .form-input {
-    background-color: white;
+    background-color: #81B861;
+    background-color: #729679;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
 }
 
 .user-information-form .form-input:disabled {
     background-color: inherit;
+    background-color: #729679;
+    background-color: #bbba9e;
+    background-color: #d5cfc1
 }

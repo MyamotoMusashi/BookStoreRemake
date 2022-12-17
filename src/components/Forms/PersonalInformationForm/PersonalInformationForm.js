@@ -20,37 +20,29 @@ function PersonalInformationForm(props) {
         props.onHandleBillingInputChange(e)
     }
 
-    return <>
+    return <div className="personal-information-form">
         <Row>
             <p>User Information:</p>
-            {props.readOnly
-                ? <UserInformationForm readOnly react defaultValues={props.user} />
-                : props.reactGuest ? <UserInformationForm reactGuest defaultValues={props.user} onChange={handleUserInputChange}/> : <UserInformationForm react reactExtended defaultValues={props.user} onChange={handleUserInputChange} editable />
-            }
-            
+            <UserInformationForm userForm={props.userForm} userFormExtended={props.userFormExtended} defaultValues={props.user} onChange={handleUserInputChange} readOnly={props.readOnly} guestForm={props.guestForm} />
         </Row>
         <Row>
             <p>Shipping Information</p>
-            {props.readOnly
-                ? <AddressInformationForm readOnly react defaultValues={props.user?.shippingInformation} />
-                : <AddressInformationForm react defaultValues={props.user?.shippingInformation} onChange={handleShippingInputChange} />
-            }
+            < AddressInformationForm react defaultValues={props.user?.shippingInformation} onChange={handleShippingInputChange} readOnly={props.readOnly} />
         </Row>
         <Row>
             <p>Billing Information</p>
-            {props.readOnly
-                ? <AddressInformationForm react defaultValues={props.user?.shippingInformation} readOnly />
-                : <AddressInformationForm react defaultValues={props.user?.shippingInformation} onChange={handleBillingInputChange} />
-            }
+            <AddressInformationForm react defaultValues={props.user?.shippingInformation} onChange={handleBillingInputChange} readOnly={props.readOnly} />
         </Row>
-    </>
+    </div>
 
 }
 
 PersonalInformationForm.propTypes = {
     user: object,
     readOnly: bool,
-    reactGuest: bool,
+    userForm: bool,
+    userFormExtended: bool,
+    guestForm: bool,
     onHandleUserInputChange: func,
     onHandleShippingInputChange: func,
     onHandleBillingInputChange: func

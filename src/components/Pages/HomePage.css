@@ -1,14 +1,64 @@
 .home-page-main {
     background-color: #729679;
+    background-color: #8d746f;
+    /* background: linear-gradient(180deg, #8C6751 50%, #8C6E64 50%); */
+    background-color: #594838;
+    background-color: #400D09;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
+}
+
+.home-page-subnavigation {
+    background-color: #729679;
+    background-color: white;
+    background-color: #b17261;
+    background-color: #c3a879;
+    background-color: #400D09;
+    background-color: #594838;
+    background-color: whitesmoke;
+    background-color: #d5cfc1;
+}
+
+.home-page-footer {
+    background-color: whitesmoke;
+    background-color: #d5cfc1;
 }
 
 .book-list,
 .book-list-item{
-    background-color: #729679;
+   /*  background-color: #729679; */
+   background-color: #400D09;
+   background-color: #d5cfc1;
+   background-color: whitesmoke;
+}
+
+.book-list {
+    background-color: #594838;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
+}
+
+.book-list-wrapper {
+    background-color: #594838;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
 }
 
 .sidebar-wrapper {
     width: 5%;
     height: 20%;
     color: white;
+    border: none;
+    
+}
+
+.sidebar {
+    background-color: #729679;
+    background-color: white;
+    border: none;
+    color: #729679;
+}
+
+.sidebar-item {
+    border: none;
 }

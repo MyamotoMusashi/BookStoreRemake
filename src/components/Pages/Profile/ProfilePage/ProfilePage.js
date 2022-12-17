@@ -1,5 +1,7 @@
 import { useSearchParams } from 'react-router-dom'
 
+import { Col } from 'react-bootstrap';
+
 import ProfileInfo from "../ProfileInfo/ProfileInfoPage"
 import ProfileOrders from "../ProfileOrders/ProfileOrders";
 
@@ -7,13 +9,13 @@ function ProfilePage() {
 
     let [searchParams] = useSearchParams();
 
-    const profileInfoPage = <div className='col-12 .profile-page-main'>
+    const profileInfoPage = <Col className='profile-page-main'>
         <ProfileInfo />
-    </div>
+    </Col>
 
-    const profileOrdersPage = <div className='col-12 .profile-page-main'>
+    const profileOrdersPage = <Col className='profile-page-main'>
         <ProfileOrders />
-    </div>
+    </Col>
 
     if (searchParams.get('get') === 'profileInfo') {
         return profileInfoPage

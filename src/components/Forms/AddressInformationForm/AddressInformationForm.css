@@ -1,7 +1,11 @@
 .address-information-form input {
+    background-color: #d5cfc1;
     background-color: white;
 }
 
 .address-information-form .form-input:disabled {
     background-color: inherit;
+    background-color: #729679;
+    background-color: #bbba9e;
+    background-color: #d5cfc1
 }

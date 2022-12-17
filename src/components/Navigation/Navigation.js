@@ -12,15 +12,18 @@ import { ShoppingCartContext } from '../contexts/ShoppingCartContext.js'
 
 
 function Navigation() {
-    let user = JSON.parse(sessionStorage.getItem('bookstore-all') || null)
+    const userContext = useContext(UserContext)
+    const shoppingCartContext = useContext(ShoppingCartContext)
+    //let user = JSON.parse(sessionStorage.getItem('bookstore-all') || null)
+    let user = userContext.user || null
+    console.log(user)
     let isUserLogged = user != null
     let isUserAdmin = user?.role === 'admin'
     let navigate = useNavigate()
-    const userContext = useContext(UserContext)
-    const shoppingCartContext = useContext(ShoppingCartContext)
 
     function lala() {
         sessionStorage.removeItem('bookstore-all')
+        userContext.updateUser(null)
         shoppingCartContext.clearShoppingCart()
         navigate('/')
     }

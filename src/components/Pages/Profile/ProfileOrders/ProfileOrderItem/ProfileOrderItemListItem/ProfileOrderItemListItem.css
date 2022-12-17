@@ -1,8 +1,12 @@
 .profile-order-item-list-item {
     background-color: #729679;
+    background-color: #7b4f36;
+    background-color: whitesmoke;
     border: none;
     border-right: solid #E1AC27 1px;
+    border-right: solid #729679 1px;
     border-left: solid #E1AC27 1px;
+    border-left: solid #729679 1px;
     font-size: medium;
 }
 

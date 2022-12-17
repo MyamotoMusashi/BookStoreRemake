@@ -12,12 +12,12 @@ function InfoToast() {
 
     const toastContext = useContext(ToastContext)
 
-    const successfullOrderMessage = 'Order #123131 has been successfully placed. To track your order click <a href="#">here</a> or go to "My Orders" in your Profile'
-    const errorMessage = 'There was problem placing your order. Please try again!'
+    //const successfullOrderMessage = 'Order #123131 has been successfully placed. To track your order click <a href="#">here</a> or go to "My Orders" in your Profile'
+    //const errorMessage = 'There was problem placing your order. Please try again!'
 
     return (
         <Row>
-            <Col md={6} className="mb-2">
+            <Col md={6}>
                 <ToastContainer position='top-center'>
                     <Toast show={toastContext.show} onClose={toastContext.toggleShow}>
                         <Toast.Header>

@@ -5,7 +5,6 @@ import { Row, Col, Form } from "react-bootstrap"
 
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton"
 import AddressInformationForm from "../AddressInformationForm/AddressInformationForm"
-import UserInformationForm from "../UserInformationForm/UserInformationForm"
 import GuestInformationForm from "../GuestInformationForm/GuestInformationForm"
 
 import userService from "../../../services/userService"
@@ -70,21 +69,10 @@ function RegisterForm() {
         )
     }
 
-    const registerUserForm = <div className="row user-register-form-wrapper">
-        <div className="col-6 offset-3 user-register-form">
-            <UserInformationForm react reactExtended onChange={handleUserInputChange} />
-            <AddressInformationForm onChange={handleShippingInputChange} />
-            <AddressInformationForm />
-            <div className="row user-register-form-register-btn-wrapper">
-                <PrimaryButton text="Register" onClick={registerUser} />
-            </div>
-        </div>
-    </div>
-
     const registerReactForm = <Row className="user-register-form-wrapper">
         <Col md={6} className="offset-3 user-register-form">
             <Form noValidate validated={validated}>
-                <PersonalInformationForm onHandleBillingInputChange={handleBillingInputChange} onHandleShippingInputChange={handleShippingInputChange} onHandleUserInputChange={handleUserInputChange}/>
+                <PersonalInformationForm userForm userFormExtended onHandleBillingInputChange={handleBillingInputChange} onHandleShippingInputChange={handleShippingInputChange} onHandleUserInputChange={handleUserInputChange}/>
                 <PrimaryButton text="Register" onClick={registerUser} />
             </Form>
         </Col>
@@ -106,9 +94,6 @@ function RegisterForm() {
     }
     else if (searchParams.get('type') === 'user') {
         return registerReactForm
-    }
-    else {
-        return registerUserForm
     }
 }
 

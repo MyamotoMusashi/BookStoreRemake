@@ -1,5 +1,9 @@
 .profile-order-item {
     background-color: #729679;
+    background-color: #7b4f36;
+    background-color: whitesmoke;
     border: none;
     border-bottom: solid #E1AC27 3px;
+    border-bottom: solid #729679 3px;
+    margin: 20px;
 }

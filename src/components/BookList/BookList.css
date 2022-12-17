@@ -1,25 +1,34 @@
 .book-list {
     background-color: inherit;
+    background-color: #729679;
+    background-color: #5e4b3a;
+    background-color: whitesmoke;
+    max-width:fit-content
 }
 
 .book-list-item {
     margin-bottom: 25px;
     border: none;
+    background-color: #2a0806;
+    background-color: #594838;
+    background-color: whitesmoke;
+    background-color: #d5cfc1;
 }
 
 .book-list-item:hover
 {
     background-color: #c22b30;
     background-color: #085a80;
+    background-color: #729679;
+    background-color: inherit;
+    background-color: #400D09;
+    background-color: whitesmoke;
 }
 
 .book-list-item:hover a {
-    color: white;
+    color: black;
+    color: #729679;
 }
 
 .book-list-item:hover button {
-    background-color: #cd9c52;
-    background-color: white;
-    color: white;
-    color: #085a80;
 }

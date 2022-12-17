@@ -1,6 +1,9 @@
 .tag-btn{
     background-color: #81B861;
+    background-color: white;
     color: white;
+    color: #c6ae8a;
+    color: #729679;
     display: inline-block;
     margin: 5px;
     padding: 5px;
@@ -11,4 +14,9 @@
 
   .tag-btn:hover {
     color: yellow;
+  }
+
+  .active {
+    background-color: #729679;
+    color: whitesmoke;
   }

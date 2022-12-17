@@ -4,7 +4,6 @@ import { object } from 'prop-types'
 import './ProfileOrderItemListItem.css'
 
 function ProfileOrderItemListItem(props) {
-    console.log(props)
     return <li className="list-group-item flex-fill profile-order-item-list-item">
         <div>
             <img src={props.book.book.coverUrl} alt="" />

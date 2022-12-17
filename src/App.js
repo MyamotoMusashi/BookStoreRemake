@@ -1,5 +1,6 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
 import { createContext, useState } from 'react';
+import { Row, Col } from 'react-bootstrap';
 
 import Navigation from './components/Navigation/Navigation';
 import ShoppingCartOffCanvas from './components/ShoppingCartOffCanvas/ShoppingCartOffCanvas';
@@ -30,7 +31,7 @@ function App() {
   });
 
   const [showLogin, setShowLogin] = useState(false)
-  const [user, setUser] = useState()
+  const [user, setUser] = useState(JSON.parse(sessionStorage.getItem('bookstore-all') || null))
 
   function updateUser(updatedUser) {
     setUser(updatedUser)
@@ -59,12 +60,12 @@ function App() {
 
           <BrowserRouter>
             <div className="App container-flux">
-              <div className='row navigation primary-color'>
-                <div className='col'>
+              <Row className='navigation'>
+                <Col>
                   <Navigation />
-                </div>
-              </div>
-              <div className='row main-content bg-color'>
+                </Col>
+              </Row>
+              <Row className='main-content bg-color'>
                 <ShoppingCartOffCanvas></ShoppingCartOffCanvas>
                 <LoginFormModal />
                 <InfoToast />
@@ -82,7 +83,7 @@ function App() {
                   <Route path='/checkout' element={<CheckoutPage />} />
                   <Route path='/users' element={<UsersPage />} />
                 </Routes>
-              </div>
+              </Row>
             </div>
           </BrowserRouter>
         </UserContext.Provider>

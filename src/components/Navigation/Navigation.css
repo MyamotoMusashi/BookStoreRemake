@@ -1,16 +1,22 @@
 .dropdown {
-    display: inline-block;
+  display: inline-block;
 }
 
-.dropdown-toggle{
-    background-color: #729679;
-    color: white;
-    display: inline-block;
-    margin: 5px;
-    padding: 5px;
-    text-decoration: none;
-  }
+.dropdown-toggle {
+  background-color: white;
+  background-color: #9a7e45;
+  background-color: #b9a17b;
+  background-color: #594838;
+  background-color: #729679;
+  color: white;
+  color: #d5a03d;
+  color: white;
+  display: inline-block;
+  margin: 5px;
+  padding: 5px;
+  text-decoration: none;
+}
 
-  .dropdown-toggle:hover {
-    color: yellow;
-  }
+.dropdown-toggle:hover {
+  color: yellow;
+}

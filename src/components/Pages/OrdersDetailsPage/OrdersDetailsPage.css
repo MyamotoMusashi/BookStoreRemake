@@ -1,9 +1,21 @@
 .order-secondary-information {
     background-color: #81B861;
+    background-color: #d5cfc1;
+    background-color: #729679;
     margin-top: 20px;
 }
 
 .order-secondary-information p {
     border: solid black 1px;
     margin-bottom: 0;
+}
+
+.order-details-wrapper {
+    background-color: #4e3926;
+    background-color: whitesmoke;
+}
+
+.order-details-wrapper .profile-order-item-list-item {
+    background-color: #4e3926;
+    background-color: whitesmoke;
 }

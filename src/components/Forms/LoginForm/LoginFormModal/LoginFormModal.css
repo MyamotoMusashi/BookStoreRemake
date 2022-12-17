@@ -1,5 +1,6 @@
 .forgotten-password-btn {
-    background-color: white;
+    background-color: #729679;
+    color: whitesmoke;
     border: none;
 }
 
@@ -8,14 +9,19 @@
     border: none;
 }
 
-.modal-footer {
-    justify-content: center;
+.modal-body {
+    background-color: whitesmoke;
 }
 
-.modal-body, .modal-footer {
+.modal-header {
     background-color: #729679;
 }
 
-.modal-header, .modal-footer {
-    background-color: #E1AC27;
+.modal-footer {
+    justify-content: center;
+    background-color: #d5cfc1;
+}
+
+.modal-footer .secondary-btn {
+    background-color: white;
 }

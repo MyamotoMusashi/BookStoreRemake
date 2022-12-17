@@ -1,4 +1,4 @@
-import React, {useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import PrimaryButton from "../../../Buttons/PrimaryButton/PrimaryButton"
@@ -35,6 +35,7 @@ function LoginForm() {
                     sessionStorage.setItem('bookstore-role', user.role)
                     sessionStorage.setItem('bookstore-all', JSON.stringify(user))
                     sessionStorage.setItem('bookstore-cart', JSON.stringify(shoppingCart))
+                    userContext.updateUser(user)
                     window.location.reload(true)
                 }
             })
@@ -43,6 +44,14 @@ function LoginForm() {
     const onGuest = () => {
         userContext.toggleShowLogin()
         shoppingCartContext.handleClose()
+        userService.registerGuestSpring({}).then(async (user) => {
+            let userData = await user.json()
+            sessionStorage.setItem('bookstore-user', userData.username)
+            sessionStorage.setItem('bookstore-role', userData.role)
+            sessionStorage.setItem('bookstore-all', JSON.stringify(userData))
+            sessionStorage.setItem('bookstore-cart', JSON.stringify(shoppingCart))
+            userContext.updateUser(userData)
+        })
         navigate('/checkout?type=guest')
     }
 

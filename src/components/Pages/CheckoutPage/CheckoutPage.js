@@ -9,6 +9,8 @@ import { ToastContext } from "../../contexts/ToastContextProvider"
 import { ShoppingCartContext } from "../../contexts/ShoppingCartContext"
 import orderService from "../../../services/OrderService"
 
+import './CheckoutPage.css'
+
 function CheckoutPage() {
     let user = JSON.parse(sessionStorage.getItem('bookstore-all'))
     let shoppingCart = useContext(ShoppingCartContext)
@@ -45,9 +47,9 @@ function CheckoutPage() {
     }
 
     if (user) {
-        return <div>
+        return <div className="checkout-page">
             <p>Summary of your order below</p>
-            <PersonalInformationForm readOnly user={user} />
+            <PersonalInformationForm readOnly userForm user={user} />
             <ProfileOrderItem order={data} />
             <PrimaryButton text="Submit Order" onClick={submitOrder} />
         </div>
@@ -55,7 +57,7 @@ function CheckoutPage() {
     else if (guest) {
         return <div>
             <p>Summary of your order below</p>
-            <PersonalInformationForm reactGuest user={user} />
+            <PersonalInformationForm guestForm user={user} />
             <ProfileOrderItem order={data} />
             <PrimaryButton text="Submit Order" onClick={submitOrder} />
         </div>

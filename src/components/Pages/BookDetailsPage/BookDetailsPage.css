@@ -1,6 +1,8 @@
 .book-details-wrapper {
     background-color: #cd9c52;
     background-color: #c22b30;
+    background-color:  #583f29;
+    background-color: whitesmoke;
     min-height: 92vh;
 }
 
@@ -10,20 +12,25 @@
 }
 
 .book-details-main-content-header {
-    color: white;
+    color: #D9D4D2;
+    color: black;
 }
 
 .book-details-overview {
     text-align: justify;
     border: solid 1px black;
+    background-color: #D9D4D2;
+    color: #262323;
+    font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman";
 }
 
-.book-details-overview {
-    color: #cd9c52;;
+.book-details-price {
+    font-weight: bold;
 }
 
 .book-details-additional-details-wrapper {
     color: #FFFF00;
+    color: black;
     border: solid 1px black;
 }
 

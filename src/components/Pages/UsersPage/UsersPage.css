@@ -1,0 +1,15 @@
+table, .user-page-wrapper {
+    background-color: whitesmoke;
+}
+
+thead {
+    background-color: #d5cfc1;
+}
+
+table a {
+    color: #729679;
+}
+
+tbody tr:nth-child(2n+1) {
+    background-color: #cccccc;
+}

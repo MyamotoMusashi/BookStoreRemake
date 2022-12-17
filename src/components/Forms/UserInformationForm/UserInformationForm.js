@@ -2,9 +2,6 @@ import { bool, func, object, element } from 'prop-types'
 
 import { Form, Col, Row } from 'react-bootstrap'
 
-import BasicForm from '../BasicForm/BasicForm'
-import BasicFormChild from '../BasicForm/BasicFormChild/BasicFormChild'
-
 import './UserInformationForm.css'
 
 function UserInformationForm(props) {
@@ -38,15 +35,15 @@ function UserInformationForm(props) {
         props.onChange(user)
     }
 
-    if (props.react) {
+    if (props.userForm) {
         return <Form onChange={handleUserInputChange} className={props.editable ? "user-information-form editable" : "user-information-form"}>
             <Col md={8} className="offset-2">
                 <Form.Group className="mb-3 user-information-form-username-wrapper" controlId="formBasicEmail">
-                    <Form.Control name="user-information-form-username-input" type="text" placeholder="Username" className='form-input' defaultValue={props.defaultValues?.username} disabled={!props.reactExtended} onChange={props.onChange} required />
+                    <Form.Control name="user-information-form-username-input" type="text" placeholder="Username" className='form-input' defaultValue={props.defaultValues?.username} disabled={!props.userFormExtended} onChange={props.onChange} required />
                     <Form.Control.Feedback type="invalid">Please choose a username.</Form.Control.Feedback>
                 </Form.Group>
             </Col>
-            {props.reactExtended ? <Row>
+            {props.userFormExtended ? <Row>
                 <Col md={4} className="offset-2">
                     <Form.Group className="mb-3 user-information-password-wrapper" controlId="formBasicEmail">
                         <Form.Control name="user-information-form-password-input" type="password" placeholder="Password" className='form-input' defaultValue={props.defaultValues?.username} disabled={props.readOnly} onChange={props.onChange} required />
@@ -91,7 +88,7 @@ function UserInformationForm(props) {
         </Form>
     }
 
-    if (props.reactGuest) {
+    if (props.guestForm) {
         return <Form onChange={handleUserInputChange} className="user-information-form editable">
             <Row>
                 <Col md={4} className="offset-2">
@@ -108,41 +105,15 @@ function UserInformationForm(props) {
             </Row>
         </Form>
     }
-
-    if (props.basic) {
-        return <BasicForm className="row user-information-form" header="User Information" onChange={handleUserInputChange}>
-            <BasicFormChild placeholder="Username" className="col-4 user-information-form-username-wrapper" defaultValue={props.defaultValues?.username} readOnly />
-            <BasicFormChild name="user-information-form-first-name-input" placeholder="First Name" className="col-4 user-information-form-first-name-wrapper" defaultValue={props.defaultValues?.firstName} readOnly={props.readOnly || null} />
-            <BasicFormChild name="user-information-form-last-name-input" placeholder="Last Name" className="col-4 user-information-form-last-name-wrapper" defaultValue={props.defaultValues?.lastName} readOnly={props.readOnly || null} />
-            <BasicFormChild name="user-information-form-phone-input" placeholder="Phone Number" className="col-4 user-information-form-phone-number-wrapper" defaultValue={props.defaultValues?.phone} readOnly={props.readOnly || null} />
-            <BasicFormChild name="user-information-form-email-input" placeholder="Email" className="col-4 user-information-form-email-wrapper" defaultValue={props.defaultValues?.email} readOnly={props.readOnly || null} />
-            {props.children}
-        </BasicForm>
-    }
-
-    if (props.extended) {
-        return <BasicForm className="row user-information-form" header="User Information" onChange={handleUserInputChange}>
-            <BasicFormChild name="user-information-form-username-input" placeholder="Username" className="col-12 user-information-form-username-wrapper" defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-password-input" placeholder="Password" className="col-4 offset-2 user-information-password-wrapper" defaultValue={props.defaultValues?.firstName} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-confirm-password-input" placeholder="Confirm Password" className="col-2 user-information-confirm-password-wrapper" defaultValue={props.defaultValues?.username} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-first-name-input" placeholder="First Name" className="col-4 offset-2 user-information-form-first-name-wrapper" defaultValue={props.defaultValues?.firstName} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-last-name-input" placeholder="Last Name" className="col-2 user-information-form-last-name-wrapper" defaultValue={props.defaultValues?.lastName} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-phone-input" placeholder="Phone Number" className="col-4 offset-2 user-information-form-phone-number-wrapper" defaultValue={props.defaultValues?.phone} readOnly={props.readOnly} onChange={props.onChange} />
-            <BasicFormChild name="user-information-form-email-input" placeholder="Email" className="col-2 user-information-form-email-wrapper" defaultValue={props.defaultValues?.email} readOnly={props.readOnly} onChange={props.onChange} />
-            {props.children}
-        </BasicForm>
-    }
 }
 
 UserInformationForm.propTypes = {
     onChange: func,
     defaultValues: object,
     readOnly: bool,
-    extended: bool,
-    basic: bool,
-    react: bool,
-    reactExtended: bool,
-    reactGuest: bool,
+    userForm: bool,
+    userFormExtended: bool,
+    guestForm: bool,
     editable: bool,
     children: element
 }

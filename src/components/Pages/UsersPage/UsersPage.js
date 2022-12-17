@@ -4,6 +4,8 @@ import { Table } from "react-bootstrap"
 
 import userService from "../../../services/userService"
 
+import './UsersPage.css'
+
 function UsersPage() {
     let [users, setUsers] = useState()
     let [isLoaded, setIsLoaded] = useState(false)
@@ -16,30 +18,32 @@ function UsersPage() {
     }, [])
 
     if (isLoaded) {
-        return <Table striped bordered hover responsive>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Username</th>
-                    <th>Password</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user, index) => {
-                    return <tr key={index}>
-                        <td>{user.id}</td>
-                        <td><Link to={`/users/${user.id}?get=profileInfo`}>{user.username}</Link></td>
-                        <td>{user.password}</td>
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.email}</td>
+        return <div className="user-page-wrapper">
+            <Table striped bordered hover responsive>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Password</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
                     </tr>
-                })}
-            </tbody>
-        </Table>
+                </thead>
+                <tbody>
+                    {users.map((user, index) => {
+                        return <tr key={index}>
+                            <td>{user.id}</td>
+                            <td><Link to={`/users/${user.id}?get=profileInfo`}>{user.username}</Link></td>
+                            <td>{user.password}</td>
+                            <td>{user.firstName}</td>
+                            <td>{user.lastName}</td>
+                            <td>{user.email}</td>
+                        </tr>
+                    })}
+                </tbody>
+            </Table>
+        </div>
     }
 }
 

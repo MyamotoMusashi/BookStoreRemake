@@ -4,12 +4,11 @@ import { Row, Col } from "react-bootstrap"
 
 import PrimaryButton from "../../../Buttons/PrimaryButton/PrimaryButton"
 import userProfilePicture from './user-profile-picture.jpg'
-import UserInformationForm from "../../../Forms/UserInformationForm/UserInformationForm"
-import AddressInformationForm from "../../../Forms/AddressInformationForm/AddressInformationForm"
 
 import userService from "../../../../services/userService"
 
 import './ProfileInfoPage.css'
+import PersonalInformationForm from "../../../Forms/PersonalInformationForm/PersonalInformationForm"
 
 function ProfileInfoPage() {
     let { userId } = useParams()
@@ -72,29 +71,7 @@ function ProfileInfoPage() {
                 </Row>
             </Col>
             <Col md={10}>
-                <Row>
-                    <Col>
-                        <p>User Information:</p>
-                        {readOnly
-                            ? <UserInformationForm readOnly react defaultValues={user} />
-                            : <UserInformationForm react defaultValues={user}  onChange={handleUserInputChange} editable/>
-                        }
-                    </Col>
-                </Row>
-                <Row>
-                    <p>Shipping Information</p>
-                    {readOnly
-                        ? <AddressInformationForm react defaultValues={user?.shippingInformation} readOnly />
-                        : <AddressInformationForm react defaultValues={user?.shippingInformation}  onChange={handleShippingInputChange}/>
-                    }
-                </Row>
-                <Row>
-                    <p>Billing Information</p>
-                    {readOnly
-                        ? <AddressInformationForm react defaultValues={user?.shippingInformation} readOnly />
-                        : <AddressInformationForm react defaultValues={user?.shippingInformation}  onChange={handleBillingInputChange}/>
-                    }
-                </Row>
+                <PersonalInformationForm userForm onHandleUserInputChange={handleUserInputChange} onHandleShippingInputChange={handleShippingInputChange} onHandleBillingInputChange={handleBillingInputChange} user={user} readOnly={readOnly}/>
                 {readOnly
                     ? <></>
                     :

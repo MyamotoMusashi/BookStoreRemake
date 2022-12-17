@@ -1,4 +1,8 @@
 .primary-btn{
+    background-color: #D9B573;
     background-color: #E1AC27;
+    color: #729679;
+    color: black;
+    font-weight: bold;
     border: none; 
 }

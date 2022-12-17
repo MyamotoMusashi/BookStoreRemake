@@ -5,7 +5,10 @@
 .shopping-cart-item-wrapper {
     border: none;
     background-color: #729679;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
     border-bottom: solid orange 3px;
+    border-bottom: solid #729679 3px;
 }
 
 .shopping-cart-item-wrapper:last-child {

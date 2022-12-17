@@ -1,10 +1,14 @@
 .offcanvas-body {
     padding: 0;
     background-color: #729679;
+    background-color: #d5cfc1;
+    background-color: whitesmoke;
 }
 
 .offcanvas-header {
     background-color: #E1AC27;
+    background-color: white;
+    background-color: #729679;
 }
 
 .offcanvas-body .heading,
@@ -20,6 +24,8 @@
 .offcanvas-body article {
     color: black;
     background-color: #729679;
+    background-color: white;
+    background-color: whitesmoke;
 }
 
 .offcanvas-body .heading,

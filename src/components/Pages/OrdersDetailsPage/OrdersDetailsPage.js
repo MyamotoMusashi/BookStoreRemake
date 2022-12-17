@@ -47,12 +47,12 @@ function OrdersDetailsPage() {
 
     if (isLoaded) {
         return <>
-            <Row className='profile-page-navigation'>
+            <Row className='home-page-subnavigation'>
                 <Col md={2}><SubNavigationButton to="/orders?status=NotProcessed" text="Not Processed"></SubNavigationButton></Col>
                 <Col md={2}><SubNavigationButton to="/orders?status=Processed" text="Processed"></SubNavigationButton></Col>
                 <Col md={2}><SubNavigationButton to="/orders?status=Completed" text="Completed"></SubNavigationButton></Col>
             </Row>
-            <Row className='align-items-start'>
+            <Row className='order-details-wrapper align-items-start'>
                 <Col md={2}>
                     <Row>
                         <OrderOverviewItem order={order} />
@@ -71,7 +71,7 @@ function OrdersDetailsPage() {
                     </Row>
                 </Col>
                 <Col md={10}>
-                    <PersonalInformationForm user={user} readOnly />
+                    <PersonalInformationForm user={user} userForm readOnly />
                     <Row>
                         <Col>
                             <ProfileOrderItemList order={order.itemsOrdered} />
