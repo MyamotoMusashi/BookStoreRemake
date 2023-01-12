@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { func, object, bool } from 'prop-types'
 
 import { Row, Col, Form } from 'react-bootstrap'
@@ -5,15 +6,23 @@ import { Row, Col, Form } from 'react-bootstrap'
 import './AddressInformationForm.css'
 
 function AddressInformationForm(props) {
-    let shippingInformation = {}
+    let [shippingInformation, setShippingInformation] = useState({
+        address1: '',
+        address2: '',
+        country: '',
+        city: '',
+        zipCode: ''
+    })
 
     function handleShippingInputChange(e) {
         switch (e.target.name) {
             case 'shipping-information-form-address1-input':
                 shippingInformation.address1 = e.target.value
+                setShippingInformation(shippingInformation)
                 break;
             case 'shipping-information-form-address2-input':
                 shippingInformation.address2 = e.target.value
+                setShippingInformation(shippingInformation)
                 break;
             case 'shipping-information-form-country-input':
                 shippingInformation.country = e.target.value
@@ -26,6 +35,7 @@ function AddressInformationForm(props) {
                 break;
         }
 
+        console.log(shippingInformation)
         props.onChange(shippingInformation)
     }
 

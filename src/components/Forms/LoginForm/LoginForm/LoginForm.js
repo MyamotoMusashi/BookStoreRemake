@@ -50,6 +50,7 @@ function LoginForm() {
             sessionStorage.setItem('bookstore-role', userData.role)
             sessionStorage.setItem('bookstore-all', JSON.stringify(userData))
             sessionStorage.setItem('bookstore-cart', JSON.stringify(shoppingCart))
+            console.log(userData)
             userContext.updateUser(userData)
         })
         navigate('/checkout?type=guest')

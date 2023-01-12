@@ -13,6 +13,7 @@ function PersonalInformationForm(props) {
     }
 
     function handleShippingInputChange(e) {
+        console.log(e)
         props.onHandleShippingInputChange(e)
     }
 
