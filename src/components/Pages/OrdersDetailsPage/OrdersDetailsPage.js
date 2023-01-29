@@ -29,12 +29,19 @@ function OrdersDetailsPage() {
                 return orderAsync
             })
             .then((data) => {
-                userService.getUserByIDSpring(data?.userId)
-                    .then(async data => {
-                        user = await data.json()
-                        setUser(user)
-                        setIsLoaded(true)
-                    })
+                return {
+                    order: data,
+                    user: userService.getUserByIDSpring(data?.userId)
+                } 
+            })
+            .then(async data => {
+                user = await (await data.user).json()
+                user.shippingInformation = await data.order.shippingInformation
+                setUser(updatedUser => ({
+                    ...updatedUser,
+                    ...user
+                }))
+                setIsLoaded(true)
             })
     }, [])
 

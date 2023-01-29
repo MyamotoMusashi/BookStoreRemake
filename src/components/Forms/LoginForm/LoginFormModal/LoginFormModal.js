@@ -25,7 +25,7 @@ function LoginFormModal() {
     const registerGuest = () => {
         userContext.toggleShowLogin()
         shoppingCartContext.handleClose()
-        navigate('/checkout?type=guest')
+        navigate('/')
     }
 
     return <Modal show={userContext.show} id="loginFormModal" centered>

@@ -1,4 +1,4 @@
-import { useNavigate, useSearchParams } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 import PrimaryButton from "../../Buttons/PrimaryButton/PrimaryButton"
 import ProfileOrderItem from "../Profile/ProfileOrders/ProfileOrderItem/ProfileOrderItem"
@@ -16,7 +16,6 @@ import { useState } from "react"
 
 function CheckoutPage() {
     let user = JSON.parse(sessionStorage.getItem('bookstore-all'))
-    console.log(user)
     let shoppingCart = useContext(ShoppingCartContext)
     let toastContext = useContext(ToastContext)
     let userContext = useContext(UserContext)
@@ -32,16 +31,23 @@ function CheckoutPage() {
         totalPrice: totalPrice.toFixed(2)
     })
 
-    let [searchParams] = useSearchParams()
-    let guest = searchParams.get('type') == 'guest'
+    let guest = user.role === 'guest'
 
     let navigate = useNavigate()
 
     function submitOrder() {
-        let order = {
-            itemsOrdered: shoppingCart.shoppingCart,
-            userId: user.id,
-            shippingInformation: user.shippingInformation
+        let order
+
+        if (user.role === 'guest') {
+            order = orderData
+        }
+        else {
+            order = {
+                itemsOrdered: shoppingCart.shoppingCart,
+                userId: user.id,
+                shippingInformation: user.shippingInformation
+            }
+
         }
 
         orderService.addOrder(order)
@@ -56,6 +62,14 @@ function CheckoutPage() {
         userService.updateUserSpring(user.id, user).then(async (user) => {
             let userData = await user.json()
             userContext.updateUser(userData)
+            let order = orderData
+
+            orderService.addOrder(order)
+            .then(() => {
+                shoppingCart.clearShoppingCart()
+                toastContext.displayMessage('order successfully placed')
+                navigate('/')
+            })
         })
     }
 
@@ -73,7 +87,10 @@ function CheckoutPage() {
         console.log(e)
         orderData.shippingInformation = e
         console.log(orderData.shippingInformation)
-        setOrderData(JSON.parse(JSON.stringify(orderData)))
+        setOrderData(orderDataToBeUpdated => ({
+            ...orderDataToBeUpdated,
+            ...orderData
+        }))
         console.log("gei")
         console.log(orderData)
     }

@@ -14,6 +14,7 @@ import OrdersPage from './components/Pages/OrdersPage/OrdersPage';
 import OrdersDetailsPage from './components/Pages/OrdersDetailsPage/OrdersDetailsPage';
 import CheckoutPage from './components/Pages/CheckoutPage/CheckoutPage';
 import UsersPage from './components/Pages/UsersPage/UsersPage';
+import SupportPage from './components/Pages/SupportPage/SupportPage';
 import LoginFormModal from './components/Forms/LoginForm/LoginFormModal/LoginFormModal'
 
 import { ShoppingCartContextProvider } from './components/contexts/ShoppingCartContext.js'
@@ -21,6 +22,8 @@ import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
 import InfoToast from './components/toasts/InfoToast';
 import { ToastContextProvider } from './components/contexts/ToastContextProvider';
+import AdminBooksPage from './components/Pages/AdminPages/AdminBooksPage/AdminBooksPage';
+import AdminAuthorsPage from './components/Pages/AdminPages/AdminAuthorsPage/AdminAuthorsPage';
 
 export const UserContext = createContext()
 
@@ -82,6 +85,9 @@ function App() {
                   />
                   <Route path='/checkout' element={<CheckoutPage />} />
                   <Route path='/users' element={<UsersPage />} />
+                  <Route path='/support' element={<SupportPage />} />
+                  <Route path='/admin/books' element={<AdminBooksPage/>}></Route>
+                  <Route path='/admin/authors' element={<AdminAuthorsPage/>}></Route>
                 </Routes>
               </Row>
             </div>

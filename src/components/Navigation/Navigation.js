@@ -33,6 +33,8 @@ function Navigation() {
         {isUserAdmin ?
             <>
                 <Button to="/orders?status=NotProcessed" text="Orders"></Button>
+                <Button to="/admin/books" text="Books"></Button>
+                <Button to="/admin/authors" text="Authors"></Button>
                 <Button to="/users" text="Users"></Button>
             </>
             : <></>}
@@ -58,6 +60,7 @@ function Navigation() {
             <Button to="#loginFormModal" text="Login / Register" onClick={userContext.toggleShowLogin}></Button>
 
         }
+        <Button to="/support" text="Contact Us"></Button>
         <OpenShoppingCartButton />
     </nav>
 }

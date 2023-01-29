@@ -43,7 +43,6 @@ function LoginForm() {
 
     const onGuest = () => {
         userContext.toggleShowLogin()
-        shoppingCartContext.handleClose()
         userService.registerGuestSpring({}).then(async (user) => {
             let userData = await user.json()
             sessionStorage.setItem('bookstore-user', userData.username)
@@ -52,8 +51,15 @@ function LoginForm() {
             sessionStorage.setItem('bookstore-cart', JSON.stringify(shoppingCart))
             console.log(userData)
             userContext.updateUser(userData)
+
+            if (shoppingCartContext.show){
+                shoppingCartContext.handleClose()
+                navigate('/checkout')
+            }
+            else {
+                navigate('/')
+            }
         })
-        navigate('/checkout?type=guest')
     }
 
     return <>
