@@ -71,15 +71,18 @@ function AddBookPage() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="summary" data-testid="form-summary">
                 <Form.Label data-testid="form-summary-label">Summary</Form.Label>
-                <Form.Control as="textarea" rows={10} placeholder="Enter summary" name="summary" data-testid="form-summary-textarea" />
+                <Form.Control as="textarea" rows={10} placeholder="Enter summary" name="summary" required data-testid="form-summary-textarea" />
+                <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-summary-feedback">Please enter summary.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="price" data-testid="form-price">
                 <Form.Label data-testid="form-price-label">Price</Form.Label>
-                <Form.Control type="text" placeholder="Enter price" name="price" data-testid="form-price-input" />
+                <Form.Control type="number" placeholder="Enter price" name="price" required data-testid="form-price-input" />
+                <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-price-feedback">Please enter price.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="coverUrl" data-testid="form-cover-url">
                 <Form.Label data-testid="form-cover-url-label">CoverUrl</Form.Label>
-                <Form.Control type="text" placeholder="Enter url to cover picture" name="coverUrl" data-testid="form-cover-url-input" />
+                <Form.Control type="url" placeholder="Enter url to cover picture" name="coverUrl" required data-testid="form-cover-url-input" />
+                <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-cover-url-feedback">Please enter url to cover picture.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="authors" data-testid="form-authors">
                 <Form.Label data-testid="form-authors-label">Authors</Form.Label>
@@ -102,7 +105,8 @@ function AddBookPage() {
             </Form.Group>
             <Form.Group className="mb-3" controlId="quantity">
                 <Form.Label>Quantity</Form.Label>
-                <Form.Control type="text" placeholder="Enter quantity" name="quantity" />
+                <Form.Control type="number" placeholder="Enter quantity" name="quantity" required/>
+                <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-quantity-feedback">Please enter quantity.</Form.Control.Feedback>
             </Form.Group>
             <Button variant="primary" type="submit" data-testid="add-book-button">
                 Add
