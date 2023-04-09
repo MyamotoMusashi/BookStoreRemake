@@ -17,7 +17,7 @@ import PersonalInformationForm from "../PersonalInformationForm/PersonalInformat
 function RegisterForm() {
 
     let [searchParams] = useSearchParams();
-    const [validated, setValidated] = useState(false);
+    const [validated, setValidated] = useState();
     let navigate = useNavigate()
     let user = new User()
 
@@ -42,14 +42,16 @@ function RegisterForm() {
     }
 
     function registerUser(event) {
-        const form = event.target.parentElement.children[0].children[1]
+        const form = event.target.parentElement.children[0].children[1].children[1]
+        const personalInformationForm = event.target.parentElement.children[0].children[0].children[1]
+        const billingInformationForm = event.target.parentElement.children[0].children[2].children[1]
 
-        if (form.checkValidity() === false) {
+        if (form.checkValidity() === false || personalInformationForm.checkValidity() === false || billingInformationForm.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
 
         }
-        else if (form.checkValidity() == true) {
+        else if (form.checkValidity() === true && personalInformationForm.checkValidity() === true && billingInformationForm.checkValidity() === true) {
             userService.registerUserSpring(user).then(async (userSpring) => {
                 let bla = await userSpring.json()
                 sessionStorage.setItem('bookstore-user', bla.username)
