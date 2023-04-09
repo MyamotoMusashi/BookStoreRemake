@@ -1,31 +1,13 @@
-import server from "../server/server"
-
-function getAllUsers() {
-    return server.users.getAllUsers()
-}
-
 function getAllUsersSpring() {
     return fetch('http://localhost:8080/users')
-}
-
-function getUserByID(id) {
-    return server.users.getUserByID(id)
 }
 
 function getUserByIDSpring(id) {
     return fetch(`http://localhost:8080/users/${id}`)
 }
 
-function authenticateUser(username, password) {
-    return server.users.authenticateUser(username, password)
-}
-
 function authenticateUserSpring(username, password) {
     return fetch(`http://localhost:8080/auth/user?username=${username}&&password=${password}`)
-}
-
-function registerUser(user) {
-    return server.users.registerUser(user)
 }
 
 function registerUserSpring(user) {
@@ -49,10 +31,6 @@ function registerGuestSpring(user) {
     })
 }
 
-function updateUser(user) {
-    return server.users.updateUser(user)
-}
-
 function updateUserSpring(userId, changedInputs) {
     return fetch(`http://localhost:8080/users/${userId}`, {
         method: 'PUT',
@@ -65,16 +43,11 @@ function updateUserSpring(userId, changedInputs) {
 }
 
 const userService = {
-    getAllUsers,
     getAllUsersSpring,
-    getUserByID,
     getUserByIDSpring,
-    authenticateUser,
     authenticateUserSpring,
-    registerUser,
     registerUserSpring,
     registerGuestSpring,
-    updateUser,
     updateUserSpring
 }
 

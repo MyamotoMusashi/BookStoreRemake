@@ -17,10 +17,10 @@ function HomePage() {
         bookService.getBooksSpring().then(async res => {
             setBooks(await res.json())
         })
-    })
+    }, [])
 
     return <>
-        <Col className='home-page-main'>
+        <Col className='home-page-main' data-testid="home-page-main">
             <Row className='home-page-subnavigation'>
                 <div className='col'><SubNavigationButton></SubNavigationButton></div>
                 <div className='col'><input type="text" placeholder='Search' /></div>

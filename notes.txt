@@ -57,3 +57,10 @@ use the same shopping infromation/ billing information from profile or other one
 save shopping information in your profile after first order if not entered
 ability to create book clubs  + club statistics + wars
 ability for authors to publish their own books for sale / somewhere should say that this is shipped by a private author / fraud mesurments
+integrate elasticsearch
+add authors aliases
+add ability to merge authors (if wrongfully added)
+find ability to select authors for books that is fool proof
+fix the add author and add book forms to match the rest of the design
+extract form control components into custom components and style them like the already existing inputs
+pictures should load last or separately for low connecitvity devices. they can continue shopping without the pictures.

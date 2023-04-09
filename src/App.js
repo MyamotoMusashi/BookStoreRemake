@@ -15,15 +15,19 @@ import OrdersDetailsPage from './components/Pages/OrdersDetailsPage/OrdersDetail
 import CheckoutPage from './components/Pages/CheckoutPage/CheckoutPage';
 import UsersPage from './components/Pages/UsersPage/UsersPage';
 import SupportPage from './components/Pages/SupportPage/SupportPage';
+import AdminBooksPage from './components/Pages/AdminPages/AdminBooksPage/AdminBooksPage';
+import AdminAuthorsPage from './components/Pages/AdminPages/Author/AdminAuthorsPage/AdminAuthorsPage';
+import AddBookPage from './components/Pages/AdminPages/AddBookPage/AddBookPage'
 import LoginFormModal from './components/Forms/LoginForm/LoginFormModal/LoginFormModal'
+import InfoToast from './components/toasts/InfoToast';
 
 import { ShoppingCartContextProvider } from './components/contexts/ShoppingCartContext.js'
+import { ToastContextProvider } from './components/contexts/ToastContextProvider';
+
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
-import InfoToast from './components/toasts/InfoToast';
-import { ToastContextProvider } from './components/contexts/ToastContextProvider';
-import AdminBooksPage from './components/Pages/AdminPages/AdminBooksPage/AdminBooksPage';
-import AdminAuthorsPage from './components/Pages/AdminPages/AdminAuthorsPage/AdminAuthorsPage';
+import AddAuthor from './components/Pages/AdminPages/Author/AddAuthor/AddAuthor';
+import AuthorDetails from './components/Pages/AdminPages/Author/AuthorDetails/AuthorDetails';
 
 export const UserContext = createContext()
 
@@ -87,7 +91,10 @@ function App() {
                   <Route path='/users' element={<UsersPage />} />
                   <Route path='/support' element={<SupportPage />} />
                   <Route path='/admin/books' element={<AdminBooksPage/>}></Route>
+                  <Route path='/admin/books/add' element={<AddBookPage/>}></Route>
                   <Route path='/admin/authors' element={<AdminAuthorsPage/>}></Route>
+                  <Route path="/authors/:id" element={<AuthorDetails/>}></Route>
+                  <Route path='/admin/authors/add' element={<AddAuthor/>}></Route>
                 </Routes>
               </Row>
             </div>

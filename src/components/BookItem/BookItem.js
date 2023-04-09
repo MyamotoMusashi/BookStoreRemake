@@ -6,6 +6,7 @@ import AddToShoppingCartButton from '../Buttons/AddToShoppingCartButton/AddToSho
 import './BookItem.css'
 
 function BookItem(props) {
+    console.log(props.data)
     let book = props.data
 
     return <article className='book-item' data-testid="book-item">

@@ -1,9 +1,3 @@
-import server from "../server/server"
-
-function getBooksById(id) {
-    return server.books.getBookById(id)
-}
-
 function getBookByIdSpring(id) {
     return fetch(`http://localhost:8080/books/${id}`)
 }
@@ -12,11 +6,20 @@ function getBooksSpring() {
     return fetch('http://localhost:8080/books')
 }
 
+function addBook(book) {
+    return fetch(`http://localhost:8080/books`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(book)
+    })
+}
+
 const bookService = {
-    getBooks: server.books.getBooks,
-    getBooksById: getBooksById,
     getBookByIdSpring,
-    getBooksSpring: getBooksSpring
+    getBooksSpring: getBooksSpring,
+    addBook
 }
 
 export default bookService
