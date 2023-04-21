@@ -26,8 +26,10 @@ import { ToastContextProvider } from './components/contexts/ToastContextProvider
 
 import './App.css';
 import '../node_modules/font-awesome/css/font-awesome.min.css'
+import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css'
 import AddAuthor from './components/Pages/AdminPages/Author/AddAuthor/AddAuthor';
 import AuthorDetails from './components/Pages/AdminPages/Author/AuthorDetails/AuthorDetails';
+import EditBookPage from './components/Pages/EditBookPage/EditBookPage';
 
 export const UserContext = createContext()
 
@@ -79,6 +81,7 @@ function App() {
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route path="/books/:bookId" element={<BookDetailsPage />} />
+                  <Route path="/books/:bookId/edit" element={<EditBookPage/>}/>
                   <Route path="/users/register" element={<UserRegisterPage />} />
                   <Route path='/users/:userId' element={<ProfilePage />} />
                   <Route path='/orders' element={<OrdersPage />} />
@@ -93,7 +96,9 @@ function App() {
                   <Route path='/admin/books' element={<AdminBooksPage/>}></Route>
                   <Route path='/admin/books/add' element={<AddBookPage/>}></Route>
                   <Route path='/admin/authors' element={<AdminAuthorsPage/>}></Route>
-                  <Route path="/authors/:id" element={<AuthorDetails/>}></Route>
+                  <Route path="/authors/:id" element={<AuthorDetails/>}>
+                    <Route path="edit" element={<AuthorDetails/>}></Route>
+                  </Route>
                   <Route path='/admin/authors/add' element={<AddAuthor/>}></Route>
                 </Routes>
               </Row>

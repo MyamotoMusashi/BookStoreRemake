@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useContext, useEffect, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 
 import AddToShoppingCartButton from '../../Buttons/AddToShoppingCartButton/AddToShoppingCartButton'
@@ -7,11 +7,15 @@ import AddToShoppingCartButton from '../../Buttons/AddToShoppingCartButton/AddTo
 import bookService from '../../../services/BookService'
 
 import './BookDetailsPage.css'
+import SubNavigation from '../../SubNavigation/SubNavigation'
+import { ToastContext } from '../../contexts/ToastContextProvider'
 
 function BookDetailsPage() {
     let id = useParams().bookId
     let [book, setBook] = useState()
     let [isLoaded, setIsLoaded] = useState(false)
+    let navigate = useNavigate()
+    let toastContext = useContext(ToastContext)
 
     useEffect(() => {
         bookService.getBookByIdSpring(id)
@@ -21,9 +25,29 @@ function BookDetailsPage() {
             })
     }, [])
 
+    function onDeleteBook(){
+        bookService.deleteBook(id)
+            .then(async response => {
+                if (response.status === 200){
+                    toastContext.displayMessage("book successfully deleted")
+                    navigate("/admin/books")
+                }
+                else {
+                    toastContext.displayErrorMessage("Bibbidi Bobbidi something went wrong. Please try again")
+                }
+            })
+    }
+
     if (isLoaded) {
         return <>
             <Col className='book-details-wrapper'>
+                <Row data-testid="subnavigation-wrapper">
+                    <SubNavigation data={[
+                        { text: "Edit Book", type: "link", href: "edit", dataTestId:"edit-book"},
+                        { text: "Disable Book", type: "button", dataTestId: "disable-book"},
+                        { text: "Delete Book", type: "button", dataTestId: "delete-book", onClick: onDeleteBook}
+                    ]} />
+                </Row>
                 <Row>
                     <div className='col book-details-main-content-header'>
                         <p>{book.title}</p>

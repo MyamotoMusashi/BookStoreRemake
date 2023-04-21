@@ -18,7 +18,7 @@ function Navigation() {
     let user = userContext.user || null
     console.log(user)
     let isUserLogged = user != null
-    let isUserAdmin = user?.role === 'admin'
+    let isUserAdmin = user?.roles.find((role) => role === 'admin') !== undefined
     let navigate = useNavigate()
 
     function lala() {

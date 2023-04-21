@@ -98,7 +98,7 @@ test('renders', async () => {
         let formSummary = screen.getByTestId("form-summary")
         expect(formSummary).toHaveClass("mb-3")
         expect(formSummary.nodeName.toLowerCase()).toBe("div")
-        expect(formSummary.childNodes.length).toBe(2)
+        expect(formSummary.childNodes.length).toBe(3)
 
         let formSummaryLabel = screen.getByTestId("form-summary-label")
         expect(formSummaryLabel).toHaveAttribute("for", "summary")
@@ -114,10 +114,16 @@ test('renders', async () => {
         expect(formSummaryTextArea).toHaveClass("form-control")
         expect(formSummaryTextArea.nodeName.toLowerCase()).toBe("textarea")
 
+        let formSummaryFeedback = screen.getByTestId("form-summary-feedback")
+        expect(formSummaryFeedback).toHaveClass("invalid-feedback")
+        expect(formSummaryFeedback).toHaveTextContent("Please enter summary.")
+        expect(formSummaryFeedback).not.toHaveAttribute("data-validated")
+        expect(formSummaryFeedback.nodeName.toLowerCase()).toBe("div")
+
         let formPrice = screen.getByTestId("form-price")
         expect(formPrice).toHaveClass("mb-3")
         expect(formPrice.nodeName.toLowerCase()).toBe("div")
-        expect(formPrice.childNodes.length).toBe(2)
+        expect(formPrice.childNodes.length).toBe(3)
 
         let formPriceLabel = screen.getByTestId("form-price-label")
         expect(formPriceLabel).toHaveAttribute("for", "price")
@@ -128,15 +134,21 @@ test('renders', async () => {
         let formPriceInput = screen.getByTestId("form-price-input")
         expect(formPriceInput).toHaveAttribute("placeholder", "Enter price")
         expect(formPriceInput).toHaveAttribute("name", "price")
-        expect(formPriceInput).toHaveAttribute("type", "text")
+        expect(formPriceInput).toHaveAttribute("type", "number")
         expect(formPriceInput).toHaveAttribute("id", "price")
         expect(formPriceInput).toHaveClass("form-control")
         expect(formPriceInput.nodeName.toLowerCase()).toBe("input")
 
+        let formPriceFeedback = screen.getByTestId("form-price-feedback")
+        expect(formPriceFeedback).toHaveClass("invalid-feedback")
+        expect(formPriceFeedback).toHaveTextContent("Please enter price.")
+        expect(formPriceFeedback).not.toHaveAttribute("data-validated")
+        expect(formPriceFeedback.nodeName.toLowerCase()).toBe("div")
+
         let formCoverUrl = screen.getByTestId("form-cover-url")
         expect(formCoverUrl).toHaveClass("mb-3")
         expect(formCoverUrl.nodeName.toLowerCase()).toBe("div")
-        expect(formCoverUrl.childNodes.length).toBe(2)
+        expect(formCoverUrl.childNodes.length).toBe(3)
 
         let formCoverUrlLabel = screen.getByTestId("form-cover-url-label")
         expect(formCoverUrlLabel).toHaveAttribute("for", "coverUrl")
@@ -147,10 +159,16 @@ test('renders', async () => {
         let formCoverUrlInput = screen.getByTestId("form-cover-url-input")
         expect(formCoverUrlInput).toHaveAttribute("placeholder", "Enter url to cover picture")
         expect(formCoverUrlInput).toHaveAttribute("name", "coverUrl")
-        expect(formCoverUrlInput).toHaveAttribute("type", "text")
+        expect(formCoverUrlInput).toHaveAttribute("type", "url")
         expect(formCoverUrlInput).toHaveAttribute("id", "coverUrl")
         expect(formCoverUrlInput).toHaveClass("form-control")
         expect(formCoverUrlInput.nodeName.toLowerCase()).toBe("input")
+
+        let formCoverUrlFeedback = screen.getByTestId("form-cover-url-feedback")
+        expect(formCoverUrlFeedback).toHaveClass("invalid-feedback")
+        expect(formCoverUrlFeedback).toHaveTextContent("Please enter url to cover picture.")
+        expect(formCoverUrlFeedback).not.toHaveAttribute("data-validated")
+        expect(formCoverUrlFeedback.nodeName.toLowerCase()).toBe("div")
 
         let formAuthors = screen.getByTestId("form-authors")
         expect(formAuthors).toHaveClass("mb-3")
@@ -166,7 +184,7 @@ test('renders', async () => {
         let formAuthorsInputGroup = screen.getByTestId("form-authors-input-group")
         expect(formAuthorsInputGroup).toHaveClass("input-group")
         expect(formAuthorsInputGroup.nodeName.toLowerCase()).toBe("div")
-        expect(formAuthorsInputGroup.childNodes.length).toBe(2)
+        expect(formAuthorsInputGroup.childNodes.length).toBe(3)
 
         let formAuthorsInputGroupSelect = screen.getByTestId("form-authors-input-group-select")
         expect(formAuthorsInputGroupSelect).toHaveClass("form-select")
@@ -185,6 +203,31 @@ test('renders', async () => {
         expect(formAuthorsInputGroupButton).toHaveClass("btn btn-primary")
         expect(formAuthorsInputGroupButton).toHaveTextContent("Add")
         expect(formAuthorsInputGroupButton.nodeName.toLowerCase()).toBe("button")
+
+        let formQuantity = screen.getByTestId("form-quantity")
+        expect(formQuantity).toHaveClass("mb-3")
+        expect(formQuantity.nodeName.toLowerCase()).toBe("div")
+        expect(formQuantity.childNodes.length).toBe(3)
+
+        let formQuantityLabel = screen.getByTestId("form-quantity-label")
+        expect(formQuantityLabel).toHaveAttribute("for", "quantity")
+        expect(formQuantityLabel).toHaveClass("form-label")
+        expect(formQuantityLabel).toHaveTextContent("Quantity")
+        expect(formQuantityLabel.nodeName.toLowerCase()).toBe("label")
+
+        let formQuantityInput = screen.getByTestId("form-quantity-input")
+        expect(formQuantityInput).toHaveAttribute("placeholder", "Enter quantity")
+        expect(formQuantityInput).toHaveAttribute("name", "quantity")
+        expect(formQuantityInput).toHaveAttribute("type", "number")
+        expect(formQuantityInput).toHaveAttribute("id", "quantity")
+        expect(formQuantityInput).toHaveClass("form-control")
+        expect(formQuantityInput.nodeName.toLowerCase()).toBe("input")
+
+        let formQuantityFeedback = screen.getByTestId("form-quantity-feedback")
+        expect(formQuantityFeedback).toHaveClass("invalid-feedback")
+        expect(formQuantityFeedback).toHaveTextContent("Please enter quantity.")
+        expect(formQuantityFeedback).not.toHaveAttribute("data-validated")
+        expect(formQuantityFeedback.nodeName.toLowerCase()).toBe("div")
     })
 })
 
@@ -264,6 +307,12 @@ test('clicking the add-book-button should redirect to "/" on success response fr
 
     await waitFor(async () => {
         userEvent.type(screen.getByTestId("form-title-input"), "gogo")
+        userEvent.type(screen.getByTestId("form-summary-textarea"), "summary of a book")
+        userEvent.type(screen.getByTestId("form-price-input"), "12")
+        userEvent.type(screen.getByTestId("form-cover-url-input"), "https://lala.com")
+        userEvent.selectOptions(screen.getByTestId("form-authors-input-group-select"), "George R.R Martin")
+        userEvent.click(screen.getByTestId("form-authors-input-group-button"))
+        userEvent.type(screen.getByTestId("form-quantity-input"), "15")
         await userEvent.click(screen.getByTestId("add-book-button"))
         expect(mockedUsedNavigate).toHaveBeenCalledWith("/")
     })
@@ -296,6 +345,42 @@ test('clicking the add-book-button should not redirect on fail response from the
     await waitFor(async () => {
         userEvent.type(screen.getByTestId("form-title-input"), "gogo")
         await userEvent.click(screen.getByTestId("add-book-button"))
+        expect(mockedUsedNavigate).toHaveBeenCalledTimes(0)
+    })
+})
+
+test('clicking the add-book-button should show trigger form validation if the form fields are empty', async () => {
+    render(<ToastContextProvider>
+        <BrowserRouter>
+            <AddBookPage />
+        </BrowserRouter>
+    </ToastContextProvider>)
+
+    server.use(
+        rest.post("http://localhost:8080/books", (req, res, ctx) => {
+            return res(
+                // Respond with a 200 status code
+                ctx.status(200),
+            );
+        })
+    )
+
+    await waitFor(async () => {
+        expect(screen.getByTestId("form-title-feedback")).not.toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-summary-feedback")).not.toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-price-feedback")).not.toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-cover-url-feedback")).not.toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-authors-input-group-feedback")).not.toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-quantity-feedback")).not.toHaveAttribute("data-validated")
+
+        await userEvent.click(screen.getByTestId("add-book-button"))
+
+        expect(screen.getByTestId("form-title-feedback")).toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-summary-feedback")).toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-price-feedback")).toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-cover-url-feedback")).toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-authors-input-group-feedback")).toHaveAttribute("data-validated")
+        expect(screen.getByTestId("form-quantity-feedback")).toHaveAttribute("data-validated")
         expect(mockedUsedNavigate).toHaveBeenCalledTimes(0)
     })
 })

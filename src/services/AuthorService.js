@@ -1,9 +1,15 @@
 function getAuthors() {
-    return fetch('http://localhost:8080/authors')
+    return fetch('http://localhost:8080/authors', {
+        method: 'GET',
+        credentials: "include"
+    })
 }
 
 function getAuthorById(id) {
-    return fetch(`http://localhost:8080/authors/${id}`)
+    return fetch(`http://localhost:8080/authors/${id}`, {
+        method: 'GET',
+        credentials: 'include'
+    })
 }
 
 function addAuthor(author) {

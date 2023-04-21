@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react"
+import { useState, useEffect } from "react"
+import { func, object } from 'prop-types';
 import { Form, Button, InputGroup } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
-import authorService from "../../../../services/AuthorService"
-import bookService from "../../../../services/BookService"
-import { ToastContext } from "../../../contexts/ToastContextProvider"
-import { useContext } from "react"
+import authorService from "../../../services/AuthorService"
+import './BookForm.css'
 
-function AddBookPage() {
+function BookForm(props) {
     let [validated, setValidated] = useState()
     let [allAuthors, setAllAuthors] = useState()
-    let [bookAuthors, setBookAuthors] = useState([])
-    let [selectAuthorOption, setSelectAuthorOption] = useState()
+    let [bookAuthors, setBookAuthors] = useState(props.data.authors || [])
+    let [selectAuthorOption, setSelectAuthorOption] = useState(null)
     let [isLoaded, setIsLoaded] = useState(false)
-    let toastContext = useContext(ToastContext)
-    let navigate = useNavigate()
 
     useEffect(() => {
         authorService.getAuthors()
@@ -26,67 +22,75 @@ function AddBookPage() {
     /*checks the form select option if it's different from "Open this select menu" 
     and adds the author if he not of the list of book's auhtors */
     function onAddAuthor() {
-        if (selectAuthorOption != "Open this select menu" && bookAuthors.findIndex((author) => author == selectAuthorOption) == -1) {
-            bookAuthors.push(selectAuthorOption)
-            setBookAuthors(JSON.parse(JSON.stringify(bookAuthors)))
-            let authorSelect = document.getElementById("authors")
-            authorSelect.setCustomValidity("")
+        if (selectAuthorOption != "Open this select menu" && selectAuthorOption != null) {
+            if (bookAuthors.findIndex((author) => author.id == selectAuthorOption.id) == -1) {
+                bookAuthors.push(selectAuthorOption)
+                setBookAuthors(JSON.parse(JSON.stringify(bookAuthors)))
+                let authorsSelect = document.getElementById("authors")
+                authorsSelect.setCustomValidity("")
+                authorsSelect.value = "Open this select menu"
+            }
         }
     }
 
-    function onAddBookFormSubmit(e) {
+    function onBookFormSubmit(e) {
+        console.log(bookAuthors)
         e.preventDefault()
-        console.log(bookAuthors.length)
-        console.log(e.target.checkValidity())
-        if (e.target.checkValidity() == false || bookAuthors.length < 1) {
-            console.log("here")
+        if (bookAuthors.length < 1) {
             let authorsSelect = document.getElementById("authors")
             authorsSelect.setCustomValidity(`Please select at least one author and click the "Add" button.`)
+        }
+
+        if (e.target.checkValidity() == false || bookAuthors.length < 1) {
             e.stopPropagation();
         }
+
         else {
             const formData = new FormData(e.target)
             const book = Object.fromEntries(formData.entries());
             book.authors = bookAuthors
-            bookService.addBook(book)
-                .then(async (res) => {
-                    const response = await res
-                    if (response.status == 200) {
-                        toastContext.displayMessage('book successfully added')
-                        navigate('/')
-                    }
-                    else {
-                        console.log("failure")
-                    }
-                })
+            props.onSubmit(book)
         }
         setValidated(true)
     }
 
     function onSelectAuthorOptionChange(event) {
-        setSelectAuthorOption(event.target.value)
+        if (event.target.value == "Open this select menu") {
+            setSelectAuthorOption(event.target.value)
+        } else {
+            setSelectAuthorOption(JSON.parse(event.target.value))
+        }
+    }
+
+    function onRemoveAuthor(e) {
+        let reducedBookAuthors = bookAuthors.filter((author) => author.id != e)
+        setBookAuthors(reducedBookAuthors)
+        if (reducedBookAuthors.length == 0){
+            let authorsSelect = document.getElementById("authors")
+            authorsSelect.setCustomValidity(`Please select at least one author and click the "Add" button.`)
+        }
     }
 
     if (isLoaded) {
-        return <Form noValidate validated={validated} onSubmit={onAddBookFormSubmit} data-testid="add-book-form">
+        return <Form noValidate validated={validated} onSubmit={onBookFormSubmit} data-testid="add-book-form">
             <Form.Group className="mb-3" controlId="title" data-testid="form-title">
                 <Form.Label data-testid="form-title-label">Title</Form.Label>
-                <Form.Control type="text" placeholder="Enter title" name="title" required data-testid="form-title-input" />
+                <Form.Control type="text" placeholder="Enter title" name="title" required defaultValue={props.data?.title} data-testid="form-title-input" />
                 <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-title-feedback">Please enter title.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="summary" data-testid="form-summary">
                 <Form.Label data-testid="form-summary-label">Summary</Form.Label>
-                <Form.Control as="textarea" rows={10} placeholder="Enter summary" name="summary" required data-testid="form-summary-textarea" />
+                <Form.Control as="textarea" rows={10} placeholder="Enter summary" name="summary" required defaultValue={props.data?.summary} data-testid="form-summary-textarea" />
                 <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-summary-feedback">Please enter summary.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="price" data-testid="form-price">
                 <Form.Label data-testid="form-price-label">Price</Form.Label>
-                <Form.Control type="number" placeholder="Enter price" name="price" required data-testid="form-price-input" />
+                <Form.Control type="number" placeholder="Enter price" name="price" required defaultValue={props.data?.price} data-testid="form-price-input" />
                 <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-price-feedback">Please enter price.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="coverUrl" data-testid="form-cover-url">
                 <Form.Label data-testid="form-cover-url-label">CoverUrl</Form.Label>
-                <Form.Control type="url" placeholder="Enter url to cover picture" name="coverUrl" required data-testid="form-cover-url-input" />
+                <Form.Control type="url" placeholder="Enter url to cover picture" name="coverUrl" required defaultValue={props.data?.coverUrl} data-testid="form-cover-url-input" />
                 <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-cover-url-feedback">Please enter url to cover picture.</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-3" controlId="authors" data-testid="form-authors">
@@ -95,30 +99,42 @@ function AddBookPage() {
                     <Form.Select onChange={onSelectAuthorOptionChange} data-testid="form-authors-input-group-select">
                         <option value="Open this select menu">Open this select menu</option>
                         {allAuthors.map((author) => {
-                            return <option value={author.name} key={author.id}>{author.name}</option>
+                            return <option value={JSON.stringify(author)} key={author.id}>{author.name}</option>
                         })}
                     </Form.Select>
                     <Button id="add-author-button" onClick={onAddAuthor} data-testid="form-authors-input-group-button">Add</Button>
                     <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-authors-input-group-feedback">Please select at least one author and click the &quot;Add&quot; button.</Form.Control.Feedback>
                 </InputGroup>
                 <div data-testid="form-authors-list-wrapper">
-                    <ul data-testid="form-authors-list">
-                        {bookAuthors.map((author, index) => {
-                            return <p key={index}>{author}</p>
+                    <ul id="form-authors-list" data-testid="form-authors-list">
+                        {bookAuthors.map((author) => {
+                            return <div key={author.id}>
+                                <img src={author.pictureUrl} />
+                                <span>
+                                    {author.name}
+                                </span>
+                                <button onClick={() => onRemoveAuthor(author.id)}><i className="fa-solid fa-xmark"></i></button>
+                            </div>
                         })}
                     </ul>
                 </div>
             </Form.Group>
             <Form.Group className="mb-3" controlId="quantity" data-testid="form-quantity">
                 <Form.Label data-testid="form-quantity-label">Quantity</Form.Label>
-                <Form.Control type="number" placeholder="Enter quantity" name="quantity" required data-testid="form-quantity-input"/>
+                <Form.Control type="number" placeholder="Enter quantity" name="quantity" required defaultValue={props.data?.quantity} data-testid="form-quantity-input" />
                 <Form.Control.Feedback type="invalid" data-validated={validated} data-testid="form-quantity-feedback">Please enter quantity.</Form.Control.Feedback>
             </Form.Group>
             <Button variant="primary" type="submit" data-testid="add-book-button">
-                Add
+                {props.actionButton.text}
             </Button>
         </Form>
     }
 }
 
-export default AddBookPage
+BookForm.propTypes = {
+    data: object,
+    onSubmit: func,
+    actionButton: object
+}
+
+export default BookForm

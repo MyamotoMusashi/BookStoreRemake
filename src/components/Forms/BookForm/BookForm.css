@@ -1,0 +1,17 @@
+#form-authors-list div {
+    background-color: gray;
+    width: fit-content;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 5px;
+}
+
+#form-authors-list img {
+    max-width: 24px;
+    max-height: 24px;
+    border-radius: 5px;
+}
+
+#form-authors-list button {
+    width: fit-content;
+}

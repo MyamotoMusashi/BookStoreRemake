@@ -18,8 +18,20 @@ function InfoToast() {
     return (
         <Row>
             <Col md={6}>
-                <ToastContainer position='top-center'>
+                <ToastContainer position='top-center' data-testid="toast-container">
                     <Toast show={toastContext.show} onClose={toastContext.toggleShow}>
+                        <Toast.Header>
+                            <img
+                                src="holder.js/20x20?text=%20"
+                                className="rounded me-2"
+                                alt=""
+                            />
+                            <strong className="me-auto">BookStore</strong>
+                            <small>11 mins ago</small>
+                        </Toast.Header>
+                        <Toast.Body>{toastContext.message}</Toast.Body>
+                    </Toast>
+                    <Toast show={toastContext.showError} onClose={toastContext.toggleShowError} bg="warning">
                         <Toast.Header>
                             <img
                                 src="holder.js/20x20?text=%20"

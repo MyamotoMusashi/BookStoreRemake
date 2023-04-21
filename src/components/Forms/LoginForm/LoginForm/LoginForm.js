@@ -21,7 +21,7 @@ function LoginForm() {
 
     const onLogin = () => {
         userService.authenticateUserSpring(usernameInput.current.value, passwordInput.current.value)
-            .then(response => {
+            .then(async response => {
                 if (response.status === 200) {
                     return response.json()
                 }
@@ -31,6 +31,7 @@ function LoginForm() {
             })
             .then(user => {
                 if (user) {
+                    console.log(user)
                     sessionStorage.setItem('bookstore-user', user.username)
                     sessionStorage.setItem('bookstore-role', user.role)
                     sessionStorage.setItem('bookstore-all', JSON.stringify(user))

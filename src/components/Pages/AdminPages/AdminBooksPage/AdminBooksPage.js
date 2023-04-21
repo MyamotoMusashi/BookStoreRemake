@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 
 import SubNavigationButton from "../../../Buttons/SubNavigationButton/SubNavigationButton"
 import bookService from "../../../../services/BookService"
+import SubNavigation from "../../../SubNavigation/SubNavigation"
 
 function AdminBooks() {
     let [books, setBooks] = useState()
@@ -18,19 +19,17 @@ function AdminBooks() {
     }, [])
 
     if (isLoaded) {
+        console.log(books)
 
         return <>
             <div>
-                <Row>
-                    <Nav as={Row} variant="pills" bsPrefix="home-page-subnavigation">
-                        <Nav.Item as={Col} md={2}>
-                            <Nav.Link as={SubNavigationButton} text="Add Book" to="/admin/books/add" eventKey="NotProcessed" bsPrefix="tag-btn"></Nav.Link>
+                <Row data-testid="subnavigation-wrapper">
+                    <SubNavigation data={[{href: "/admin/books/add", text: "Add Book", type: "link"}]}>
+                    <Nav.Item as={Col} md={2} data-testid="subnavigation-search-books-item">
+                            <input type="text" placeholder="Search Books" data-testid="subnavigation-search-books-item-input"/>
+                            <Nav.Link as={SubNavigationButton} text="Search" to="/orders?status=Completed" eventKey="Completed" bsPrefix="tag-btn" data-testid="subnavigation-search-books-item-link"></Nav.Link>
                         </Nav.Item>
-                        <Nav.Item as={Col} md={2}>
-                            <input type="text" placeholder="Search Books"/>
-                            <Nav.Link as={SubNavigationButton} text="Search" to="/orders?status=Completed" eventKey="Completed" bsPrefix="tag-btn"></Nav.Link>
-                        </Nav.Item>
-                    </Nav>
+                    </SubNavigation>
                 </Row>
                 <Row>
                     <Table striped bordered hover responsive>
@@ -47,12 +46,11 @@ function AdminBooks() {
                         </thead>
                         <tbody>
                             {books.map((book, index) => {
-                                console.log(book)
                                 return <tr key={index}>
                                     <td>{book.id}</td>
                                     <td><Link to={`/books/${book.id}`}>{book.title}</Link></td>
                                     <td>{book.authors.map((author) => {
-                                        return <span key={author}>{author}</span>
+                                        return <p key={author.id}>{author.name}</p>
                                     })}
                                     </td>
                                     <td><img src={book.coverUrl} style={{ maxHeight: '60px' }} /></td>

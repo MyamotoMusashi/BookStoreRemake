@@ -7,7 +7,10 @@ function getUserByIDSpring(id) {
 }
 
 function authenticateUserSpring(username, password) {
-    return fetch(`http://localhost:8080/auth/user?username=${username}&&password=${password}`)
+    return fetch(`http://localhost:8080/auth/user?username=${username}&&password=${password}`, {
+        method: 'GET',
+        credentials: 'include'
+    })
 }
 
 function registerUserSpring(user) {

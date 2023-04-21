@@ -9,14 +9,29 @@
     padding: 5px;
     text-decoration: none;
     width: max-content;
+    border: none;
     border-radius: 5px;
   }
 
   .tag-btn:hover {
     color: yellow;
+    background-color: #729679;
   }
 
   .active {
     background-color: #729679;
     color: whitesmoke;
+  }
+
+  .tag-btn-link{
+    display: inline-block;
+    text-decoration: none;
+    margin: 5px;
+    padding: 5px;
+    color: #729679;
+    font-weight: bold;
+  }
+
+  .tag-btn-link:hover{
+    color: yellow;
   }

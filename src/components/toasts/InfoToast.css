@@ -24,3 +24,7 @@
   .secondary-color{
     background-color: #81B861;
   }
+
+  .bg-warning .toast-header, .bg-warning .toast-body{
+    background-color: red;
+  }

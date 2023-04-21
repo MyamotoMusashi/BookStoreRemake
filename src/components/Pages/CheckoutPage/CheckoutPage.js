@@ -58,7 +58,10 @@ function CheckoutPage() {
             })
     }
 
-    function submitGuestOrder() {
+    function submitGuestOrder(event) {
+        let form = event.target.parentElement.children[1]
+        console.log(form)
+
         userService.updateUserSpring(user.id, user).then(async (user) => {
             let userData = await user.json()
             userContext.updateUser(userData)

@@ -16,10 +16,17 @@ function addBook(book) {
     })
 }
 
+function deleteBook(id) {
+    return fetch(`http://localhost:8080/books/${id}`, {
+        method: 'DELETE'
+    })
+}
+
 const bookService = {
     getBookByIdSpring,
     getBooksSpring: getBooksSpring,
-    addBook
+    addBook,
+    deleteBook
 }
 
 export default bookService
